@@ -51,9 +51,8 @@ else {
  *                     would monitor https://<instance>.firebaseio.com/users/profiles
  * {string}   index:   [required] the name of the ES index to write data into
  * {string}   type:    [required] name of the ES object type this document will be stored as
- * {Array}    fields:  list of fields to be monitored (defaults to all fields)
  * {Function} filter:  if provided, only records that return true are indexed
- * {Function} parser:  if provided, the results of this function are passed to ES, rather than the raw data (fields is ignored if this is used)
+ * {Function} parse:   if provided, the results of this function are passed to ES, rather than the raw data (fields is ignored if this is used)
  ****************************************************/
 
 exports.paths = [
@@ -66,7 +65,6 @@ exports.paths = [
       path:  "messages",
       index: "firebase",
       type:  "message",
-      fields: ['msg', 'name'],
       filter: function(data) { return data.name !== 'system'; }
    }
 ];
