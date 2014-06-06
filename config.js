@@ -60,25 +60,71 @@ else {
  ****************************************************/
 
 exports.paths = [
-   {
-      path:  "users",
-      index: "firebase",
-      type:  "user"
-   },
-   {  path:  "annotations",
-      index: "firebase",
-      type:  "annotation"
-   },
-   { 
-      path:  "communities",
-      index: "firebase",
-      type:  "community"
-   },
-   {
-      path:  "posts",
-      index: "firebase",
-      type:  "post"
-   }
+  {
+    path:  "users",
+    index: "firebase",
+    type:  "user",
+    parse: function(data) {
+      return { // Importantly, leave OUT the user's email
+        firstName: data.firstName,
+        lastName: data.lastName,
+        slug: data.slug,
+        biography: data.biography ? S(data.biography).stripTags().s : null,
+        organization: data.organization,
+        position: data.position,
+        profileImage: data.profileImage,
+        followers: _.keys(data.followers),
+        usersFollowing: _.keys(data.usersFollowing),
+        communitiesFollowing: _.keys(data.communitiesFollowing)
+      }
+    }
+  },
+  {  path:  "annotations",
+     index: "firebase",
+     type:  "annotation",
+     parse: function(data) {
+       return {
+	 text: data.text,
+	 created: data.created,
+	 selectedLength: data.selection.length,
+	 selectedContent: data.selection.quotation,
+	 document: data.document,
+	 author: data.author,
+	 communities: _.keys(data.communities)
+       }
+     }
+  },
+  { 
+    path:  "communities",
+    index: "firebase",
+    type:  "community",
+    parse: function(data) {
+      return {
+        name: data.name,
+        slug: data.slug,
+        summary: data.summary ? S(data.summary).stripTags().s : null,
+        followers: _.keys(data.followers),
+        followersCount: _.keys(data.followers).length
+      }
+    }
+  },
+  {
+    path:  "posts",
+    index: "firebase",
+    type:  "post",
+    parse: function(data) {
+      return {
+        title: data.title ? S(data.title).stripTags().s : null,
+        body: data.body ? S(data.body).stripTags().s : null,
+        author: data.author,
+        created: data.created,
+        upvotes: _.keys(data.upvotes),
+        upvotesCount: _.keys(data.upvotes).length,
+        communities: _.keys(data.communities),
+        slug: data.slug
+      }
+    }
+  }
 ];
 
 // Paths can also be stored in Firebase and loaded using FB_PATHS!
