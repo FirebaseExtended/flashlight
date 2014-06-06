@@ -13,6 +13,9 @@
 exports.FB_URL   = 'https://' + process.env.FB_NAME + '.firebaseio.com/';
 
 // Either your Firebase secret or a token you create with no expiry, used to authenticate
+var S = require('string');
+var _ = require('lodash');
+
 // To Firebase and access search data.
 exports.FB_TOKEN = process.env.FB_TOKEN || null;
 
