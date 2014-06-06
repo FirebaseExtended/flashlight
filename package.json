@@ -18,6 +18,7 @@
     "elastic.js": "~1.1.1",
     "elasticsearchclient": "~0.5.3",
     "firebase": "~1.0.1-npm",
+    "lodash": "^2.4.1",
     "string": "^1.8.1"
   }
 }
