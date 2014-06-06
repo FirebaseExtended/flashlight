@@ -15,7 +15,7 @@ var esc = new ElasticClient({
    host: conf.ES_HOST,
    port: conf.ES_PORT,
 //   pathPrefix: 'optional pathPrefix',
-   secure: false,
+   secure: ( conf.ES_PORT=='443' ? true : false ),
    //Optional basic HTTP Auth
    auth: conf.ES_USER? {
       username: conf.ES_USER,

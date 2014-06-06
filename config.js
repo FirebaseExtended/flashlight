@@ -65,12 +65,19 @@ exports.paths = [
       index: "firebase",
       type:  "user"
    },
-   {
-      path:  "messages",
+   {  path:  "annotations",
       index: "firebase",
-      type:  "message",
-      fields: ['msg', 'name'],
-      filter: function(data) { return data.name !== 'system'; }
+      type:  "annotation"
+   },
+   { 
+      path:  "communities",
+      index: "firebase",
+      type:  "community"
+   },
+   {
+      path:  "posts",
+      index: "firebase",
+      type:  "post"
    }
 ];
 
@@ -88,9 +95,9 @@ exports.CLEANUP_INTERVAL =
       60*1000 /* once a minute */;
 
 function processBonsaiUrl(exports, url) {
-   var matches = url.match(/^https?:\/\/([^:]+):([^@]+)@([^/]+)\/?$/);
+   var matches = url.match(/^https?:\/\/([^:]+):([^@]+)@([^:]+):([^/]+)\/?$/);
    exports.ES_HOST = matches[3];
-   exports.ES_PORT = 80;
+   exports.ES_PORT = matches[4];
    exports.ES_USER = matches[1];
    exports.ES_PASS = matches[2];
    console.log('Configured using BONSAI_URL environment variable', url, exports);
