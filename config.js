@@ -87,7 +87,7 @@ exports.paths = [
      type:  "annotation",
      parse: function(data) {
        return {
-	 text: data.text,
+	 text: S(data.text).stripTags().s,
 	 created: data.created,
 	 selectedLength: data.selection.length,
 	 selectedContent: data.selection.quotation,
