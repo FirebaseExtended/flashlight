@@ -10,11 +10,11 @@ This script can:
  
 Casetext Specific Instructions
 ==============================
-1) clone the repo
-2) Install/start elasticsearch
-3) Initialize your index with "curl -X POST http://localhost:9200/firebase"
-4) Set FB_NAME to the name of your firebase (e.g., casetext-richard)
-5) Start the app, either with "node app.js" or with "foreman start"
+ - clone the repo
+ - Install/start elasticsearch
+ - Initialize your index with "curl -X POST http://localhost:9200/firebase"
+ - Set FB_NAME to the name of your firebase (e.g., casetext-richard)
+ - Start the app, either with "node app.js" or with "foreman start"
 
 
 Getting Started
