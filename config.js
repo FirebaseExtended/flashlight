@@ -66,7 +66,7 @@ exports.paths = [
   {
     path:  "users",
     index: "firebase",
-    type:  "user",
+    type:  "users",
     parse: function(data) {
       return { // Importantly, leave OUT the user's email
         firstName: data.firstName,
@@ -84,7 +84,7 @@ exports.paths = [
   },
   {  path:  "annotations",
      index: "firebase",
-     type:  "annotation",
+     type:  "annotations",
      parse: function(data) {
        return {
 	 text: S(data.text).stripTags().s,
@@ -100,7 +100,7 @@ exports.paths = [
   { 
     path:  "communities",
     index: "firebase",
-    type:  "community",
+    type:  "communities",
     parse: function(data) {
       return {
         name: data.name,
@@ -114,7 +114,7 @@ exports.paths = [
   {
     path:  "posts",
     index: "firebase",
-    type:  "post",
+    type:  "posts",
     parse: function(data) {
       return {
         title: data.title ? S(data.title).stripTags().s : null,
