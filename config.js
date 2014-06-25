@@ -90,7 +90,7 @@ exports.paths = [
 	 text: S(data.text).stripTags().s,
 	 created: data.created,
 	 selectedLength: data.selection.length,
-	 selectedContent: data.selection.quotation,
+	 selectedContent: S(data.selection.quotation).stripTags().s,
 	 document: data.document,
 	 author: data.author,
 	 communities: _.keys(data.communities)
