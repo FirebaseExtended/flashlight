@@ -89,20 +89,21 @@ exports.paths = [
       }
     }
   },
-  {  path:  "annotations",
-     index: "firebase",
-     type:  "annotations",
-     parse: function(data) {
-       return {
-	 text: S(data.text).stripTags().s,
-	 created: data.created,
-	 selectedLength: data.selection.length,
-	 selectedContent: S(data.selection.quotation).stripTags().s,
-	 document: data.document,
-	 author: data.author,
-	 communities: _.keys(data.communities)
-       }
-     }
+  {  
+    path:  "annotations",
+    index: "firebase",
+    type:  "annotations",
+    parse: function(data) {
+      return {
+	      text: S(data.text).stripTags().s,
+	      created: data.created,
+	      selectedLength: data.selection.length,
+	      selectedContent: S(data.selection.quotation).stripTags().s,
+	      document: data.document,
+	      author: data.author,
+	      communities: _.keys(data.communities)
+      }
+    }
   },
   { 
     path:  "communities",
