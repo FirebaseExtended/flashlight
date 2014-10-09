@@ -59,7 +59,8 @@ else {
  *                     would monitor https://<instance>.firebaseio.com/users/profiles
  * {string}   index:   [required] the name of the ES index to write data into
  * {string}   type:    [required] name of the ES object type this document will be stored as
- * {Array}    fields:  list of fields to be monitored (defaults to all fields)
+ * {Array}    fields:  list of fields to be monitored and indexed (defaults to all fields, ignored if "parser" is specified)
+ * {Array}    omit:    list of fields that should not be indexed in ES (ignored if "parser" is specified)
  * {Function} filter:  if provided, only records that return true are indexed
  * {Function} parser:  if provided, the results of this function are passed to ES, rather than the raw data (fields is ignored if this is used)
  *
