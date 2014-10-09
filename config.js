@@ -10,7 +10,7 @@
  ***************************************************/
 
 // Your Firebase instance where we will listen and write search results
-exports.FB_URL   = 'https://' + process.env.FB_NAME + '.firebaseio.com/';
+exports.FB_URL   = 'https://' + process.env.FIREBASE_URL + '/'
 
 // Either your Firebase secret or a token you create with no expiry, used to authenticate
 var S = require('string');
