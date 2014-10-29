@@ -9,7 +9,7 @@
                // I can only read records assigned to me
                ".read": "auth.id === data.child('id').val() || auth.uid === data.child('id').val()",
                // I can only write new records that don't exist yet
-               ".write": "!data.exists() && (newData.id === auth.id || newData.id === auth.uid)",
+               ".write": "!data.exists() && (newData.child('id').val() === auth.id || newData.child('id').val() === auth.uid)",
                ".validate": "newData.hasChildren(['query', 'index', 'type'])",
                "index": {
                   // accepts arrays or strings
