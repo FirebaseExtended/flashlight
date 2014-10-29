@@ -14,7 +14,6 @@ var ElasticClient = require('elasticsearchclient'),
 var esc = new ElasticClient({
    host: conf.ES_HOST,
    port: conf.ES_PORT,
-//   pathPrefix: 'optional pathPrefix',
    secure: ( conf.ES_PORT=='443' ? true : false ),
    //Optional basic HTTP Auth
    auth: conf.ES_USER? {
@@ -24,7 +23,11 @@ var esc = new ElasticClient({
 });
 console.log('Connected to ElasticSearch host %s:%s'.grey, conf.ES_HOST, conf.ES_PORT);
 
-fbutil.auth(conf.FB_URL, conf.FB_TOKEN).done(function() {
-   PathMonitor.process(esc, conf.FB_URL, conf.paths, conf.FB_PATH);
+fbutil.auth().then(function(authToken) {
+   PathMonitor.process(esc, authToken, conf.paths, conf.FB_PATH);
    SearchQueue.init(esc, conf.FB_URL, conf.FB_REQ, conf.FB_RES, conf.CLEANUP_INTERVAL);
+})
+.catch(function(err) {
+  console.log(err);
+  return; // e.g., quit.
 });
