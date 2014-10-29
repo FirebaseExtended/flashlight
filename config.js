@@ -73,7 +73,7 @@ exports.paths = [
         followers: _.keys(data.followers),
         usersFollowing: _.keys(data.usersFollowing),
         communitiesFollowing: _.keys(data.communitiesFollowing)
-      }
+      };
     }
   },
   {  
@@ -89,7 +89,7 @@ exports.paths = [
 	      document: data.document,
 	      author: data.author,
 	      communities: _.keys(data.communities)
-      }
+      };
     }
   },
   { 
@@ -103,7 +103,7 @@ exports.paths = [
         summary: data.summary ? S(data.summary).stripTags().s : null,
         followers: _.keys(data.followers),
         followersCount: _.keys(data.followers).length
-      }
+      };
     }
   },
   {
@@ -120,7 +120,7 @@ exports.paths = [
         upvotesCount: _.keys(data.upvotes).length,
         communities: _.keys(data.communities),
         slug: data.slug
-      }
+      };
     }
   }
 ];
