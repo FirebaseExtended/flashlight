@@ -23,11 +23,11 @@ var esc = new ElasticClient({
 });
 console.log('Connected to ElasticSearch host %s:%s'.grey, conf.ES_HOST, conf.ES_PORT);
 
-fbutil.auth().then(function(authToken) {
-   PathMonitor.process(esc, authToken, conf.paths, conf.FB_PATH);
-   SearchQueue.init(esc, conf.FB_URL, conf.FB_REQ, conf.FB_RES, conf.CLEANUP_INTERVAL);
+fbutil.auth().then(function() {
+  PathMonitor.process(esc, conf.paths, conf.FB_PATH);
+  SearchQueue.init(esc, conf.FB_REQ, conf.FB_RES, conf.CLEANUP_INTERVAL);
 })
 .catch(function(err) {
   console.log(err);
-  return; // e.g., quit.
+  return; 
 });
