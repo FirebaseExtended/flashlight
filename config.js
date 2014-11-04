@@ -21,22 +21,7 @@ exports.FB_RES   = process.env.FB_RES || 'search/response';
 /** ElasticSearch Settings
  *********************************************/
 
-if( process.env.BONSAI_URL ) {
-   processBonsaiUrl(exports, process.env.BONSAI_URL);
-}
-else {
-   // ElasticSearch server's host URL
-   exports.ES_HOST  = process.env.ES_HOST || 'localhost';
-
-   // ElasticSearch server's host port
-   exports.ES_PORT  = process.env.ES_PORT || '9200';
-
-   // ElasticSearch username for http auth
-   exports.ES_USER  = process.env.ES_USER || null;
-
-   // ElasticSearch password for http auth
-   exports.ES_PASS  = process.env.ES_PASS || null;
-}
+exports.ELASTICSEARCH_URL = ( process.env.BONSAI_URL ? process.env.BONSAI_URL : "http://localhost:9200" );
 
 
 /** Paths to Monitor
@@ -154,6 +139,7 @@ exports.paths = [
 
           retval.authors = authorsArray;
           retval.destinationDocId = d;
+          retval.description = retval.description ? S(retval.description).stripTags().s : null;
           
           return retval;
         })
