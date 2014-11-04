@@ -133,6 +133,22 @@ exports.paths = [
         slug: data.slug
       }
     }
+  },
+  {
+    path: "links",
+    index: "firebase",
+    type: "links",
+    parse: function(data) {
+      console.log(data);
+      return {
+        title: data.title ? S(data.title).stripTags().s : null,
+        description: data.description ? S(data.description).stripTags().s : null,
+        providerName: data.providerName ? S(data.providerName).stripTags().s : null,
+        upvotes: _.keys(data.upvotes),
+        upvotesCount: _.keys(data.upvotes).length,
+        communities: _.keys(data.communities)
+      }
+    }
   }
 ];
 
