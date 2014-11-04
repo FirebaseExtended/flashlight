@@ -6,24 +6,11 @@
  * ElasticSearch server is at localhost:9200.
  */
 
-/** Firebase Settings
- ***************************************************/
-
-// Your Firebase instance where we will listen and write search results
-exports.FB_URL   = 'https://' + process.env.FB_NAME + '.firebaseio.com/';
-
-// Either your Firebase secret or a token you create with no expiry, used to authenticate
 var S = require('string');
 var _ = require('lodash');
-var FirebaseTokenGenerator = require('firebase-token-generator');
 
-// To Firebase and access search data.
-exports.FB_TOKEN = process.env.FB_TOKEN || null;
-
-if (process.env.FIREBASE_AUTH_SECRET) {
-    exports.FB_TOKEN = (new FirebaseTokenGenerator(process.env.FIREBASE_AUTH_SECRET))
-      .createToken({'uid': 'machine', 'machine': true});
-}
+/** Firebase Settings
+ ***************************************************/
 
 // The path in your Firebase where clients will write search requests
 exports.FB_REQ   = process.env.FB_REQ || 'search/request';
@@ -59,7 +46,8 @@ else {
  *                     would monitor https://<instance>.firebaseio.com/users/profiles
  * {string}   index:   [required] the name of the ES index to write data into
  * {string}   type:    [required] name of the ES object type this document will be stored as
- * {Array}    fields:  list of fields to be monitored (defaults to all fields)
+ * {Array}    fields:  list of fields to be monitored and indexed (defaults to all fields, ignored if "parser" is specified)
+ * {Array}    omit:    list of fields that should not be indexed in ES (ignored if "parser" is specified)
  * {Function} filter:  if provided, only records that return true are indexed
  * {Function} parser:  if provided, the results of this function are passed to ES, rather than the raw data (fields is ignored if this is used)
  *
@@ -85,23 +73,24 @@ exports.paths = [
         followers: _.keys(data.followers),
         usersFollowing: _.keys(data.usersFollowing),
         communitiesFollowing: _.keys(data.communitiesFollowing)
-      }
+      };
     }
   },
-  {  path:  "annotations",
-     index: "firebase",
-     type:  "annotations",
-     parse: function(data) {
-       return {
-	 text: S(data.text).stripTags().s,
-	 created: data.created,
-	 selectedLength: data.selection.length,
-	 selectedContent: S(data.selection.quotation).stripTags().s,
-	 document: data.document,
-	 author: data.author,
-	 communities: _.keys(data.communities)
-       }
-     }
+  {  
+    path:  "annotations",
+    index: "firebase",
+    type:  "annotations",
+    parse: function(data) {
+      return {
+	      text: S(data.text).stripTags().s,
+	      created: data.created,
+	      selectedLength: data.selection.length,
+	      selectedContent: S(data.selection.quotation).stripTags().s,
+	      document: data.document,
+	      author: data.author,
+	      communities: _.keys(data.communities)
+      };
+    }
   },
   { 
     path:  "communities",
@@ -114,7 +103,7 @@ exports.paths = [
         summary: data.summary ? S(data.summary).stripTags().s : null,
         followers: _.keys(data.followers),
         followersCount: _.keys(data.followers).length
-      }
+      };
     }
   },
   {
@@ -131,7 +120,7 @@ exports.paths = [
         upvotesCount: _.keys(data.upvotes).length,
         communities: _.keys(data.communities),
         slug: data.slug
-      }
+      };
     }
   },
   {
