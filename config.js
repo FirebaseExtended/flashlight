@@ -136,9 +136,30 @@ exports.paths = [
         upvotes: _.keys(data.upvotes),
         upvotesCount: _.keys(data.upvotes).length,
         communities: _.keys(data.communities)
-      }
+      };
     }
-  }
+  },
+  {
+    path: "wecite",
+    index: "casetext",
+    type: "wecites",
+    nested: { parentType: "document", parentField: "wecites" },
+    parse: function(data) {
+      return {
+        wecites: Object.keys(data).map( function(d) {
+          var retval = data[d];
+          var authorsArray = Object.keys( retval.authors ).sort( function(a,b) {
+            return retval.authors[a]['.priority'] - retval.authors[b]['.priority'];
+          });
+
+          retval.authors = authorsArray;
+          retval.destinationDocId = d;
+          
+          return retval;
+        })
+      };
+    }
+  }            
 ];
 
 // Paths can also be stored in Firebase and loaded using FB_PATHS!
