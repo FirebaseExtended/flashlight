@@ -4,8 +4,6 @@
  * @version 0.3, 3 June 2014
  */
 
-var url = require('url');
-
 var es = require('elasticsearch'),
    conf          = require('./config'),
    fbutil        = require('./lib/fbutil'),

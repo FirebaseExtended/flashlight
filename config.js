@@ -128,24 +128,27 @@ exports.paths = [
     path: "wecite",
     index: "casetext",
     type: "wecites",
-    nested: { parentType: "document", parentField: "wecites" },
-    parse: function(data) {
-      return {
-        wecites: Object.keys(data).map( function(d) {
-          var retval = data[d];
-          var authorsArray = Object.keys( retval.authors ).sort( function(a,b) {
-            return retval.authors[a]['.priority'] - retval.authors[b]['.priority'];
-          });
-
-          retval.authors = authorsArray;
-          retval.destinationDocId = d;
-          retval.description = retval.description ? S(retval.description).stripTags().s : null;
-          
-          return retval;
-        })
-      };
+    nested: { 
+      parentType: "document", 
+      parentField: "wecites",
+      parentOmit: "text",
+      childIdField: "destinationDocId"
+    },
+    parser: function(data) {
+      return Object.keys(data).map( function(d) {
+        var retval = data[d];
+        var authorsArray = Object.keys( retval.authors ).sort( function(a,b) {
+          return retval.authors[a]['.priority'] - retval.authors[b]['.priority'];
+        });
+        
+        retval.authors = authorsArray;
+        retval.destinationDocId = d;
+        retval.description = retval.description ? S(retval.description).stripTags().s : null;
+        
+        return retval;
+      });
     }
-  }            
+  }
 ];
 
 // Paths can also be stored in Firebase and loaded using FB_PATHS!
