@@ -61,6 +61,7 @@ exports.paths = [
     path:  "users",
     index: "firebase",
     type:  "users",
+    omit: ["email", "welcomeEmailSent"],
     parse: function(data) {
       return { // Importantly, leave OUT the user's email
         firstName: data.firstName,
