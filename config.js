@@ -138,11 +138,9 @@ exports.paths = [
     parser: function(data) {
       return Object.keys(data).map( function(d) {
         var retval = data[d];
-        var authorsArray = ( retval.authors 
-                             ? Object.keys( retval.authors ).sort( function(a,b) {
-                               return retval.authors[a]['.priority'] - retval.authors[b]['.priority'];
-                             })
-                             : [] );
+        var authorsArray = _.keys( retval.authors ).sort( function(a,b) {
+          return retval.authors[a]['.priority'] - retval.authors[b]['.priority'];
+        });
         
         retval.authors = authorsArray;
         retval.destinationDocId = d;
