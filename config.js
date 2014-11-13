@@ -57,13 +57,13 @@ exports.paths = [
     path:  "communities",
     index: "firebase",
     type:  "communities",
-    omit: ["featuredFollowers", "followers", "feeds"]
+    omit: ["featuredFollowers", "followers"]
   },
   {
     path:  "posts",
     index: "firebase",
     type:  "posts",
-    omit: ["feeds", "users"]
+    omit: ["users"]
   },
   {
     path: "links",
