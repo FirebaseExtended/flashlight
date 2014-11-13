@@ -61,84 +61,27 @@ exports.paths = [
     path:  "users",
     index: "firebase",
     type:  "users",
-    omit: ["email", "welcomeEmailSent"],
-    parse: function(data) {
-      return { // Importantly, leave OUT the user's email
-        firstName: data.firstName,
-        lastName: data.lastName,
-        slug: data.slug,
-        biography: data.biography ? S(data.biography).stripTags().s : null,
-        organization: data.organization,
-        position: data.position,
-        profileImage: data.profileImage,
-        followers: _.keys(data.followers),
-        usersFollowing: _.keys(data.usersFollowing),
-        communitiesFollowing: _.keys(data.communitiesFollowing)
-      };
-    }
+    omit: ["email", "welcomeEmailSent"]
   },
   {  
     path:  "annotations",
     index: "firebase",
-    type:  "annotations",
-    parse: function(data) {
-      return {
-	      text: S(data.text).stripTags().s,
-	      created: data.created,
-	      selectedLength: data.selection.length,
-	      selectedContent: S(data.selection.quotation).stripTags().s,
-	      document: data.document,
-	      author: data.author,
-	      communities: _.keys(data.communities)
-      };
-    }
+    type:  "annotations"
   },
   { 
     path:  "communities",
     index: "firebase",
-    type:  "communities",
-    parse: function(data) {
-      return {
-        name: data.name,
-        slug: data.slug,
-        summary: data.summary ? S(data.summary).stripTags().s : null,
-        followers: _.keys(data.followers),
-        followersCount: _.keys(data.followers).length
-      };
-    }
+    type:  "communities"
   },
   {
     path:  "posts",
     index: "firebase",
-    type:  "posts",
-    parse: function(data) {
-      return {
-        title: data.title ? S(data.title).stripTags().s : null,
-        body: data.body ? S(data.body).stripTags().s : null,
-        author: data.author,
-        created: data.created,
-        upvotes: _.keys(data.upvotes),
-        upvotesCount: _.keys(data.upvotes).length,
-        communities: _.keys(data.communities),
-        slug: data.slug
-      };
-    }
+    type:  "posts"
   },
   {
     path: "links",
     index: "firebase",
-    type: "links",
-    parse: function(data) {
-      console.log(data);
-      return {
-        title: data.title ? S(data.title).stripTags().s : null,
-        description: data.description ? S(data.description).stripTags().s : null,
-        providerName: data.providerName ? S(data.providerName).stripTags().s : null,
-        upvotes: _.keys(data.upvotes),
-        upvotesCount: _.keys(data.upvotes).length,
-        communities: _.keys(data.communities)
-      }
-    }
+    type: "links"
   }
 ];
 
