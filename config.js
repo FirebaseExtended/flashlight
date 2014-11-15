@@ -77,7 +77,6 @@ exports.paths = [
     nested: { 
       parentType: "document", 
       parentField: "wecites",
-      parentOmit: "text",
       childIdField: "destinationDocId"
     },
     parser: function(data) {
