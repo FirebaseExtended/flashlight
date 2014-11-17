@@ -97,7 +97,7 @@ exports.FB_PATH = process.env.FB_PATHS || null;
 // How often should the script remove unclaimed search results? probably just leave this alone
 exports.CLEANUP_INTERVAL =
    process.env.NODE_ENV === 'production'?
-      3600*1000 /* once an hour */ :
+      900*1000 /* once an hour */ :
       60*1000 /* once a minute */;
 
 function processBonsaiUrl(exports, url) {
