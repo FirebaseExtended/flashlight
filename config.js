@@ -63,13 +63,13 @@ exports.paths = [
     path:  "posts",
     index: "firebase",
     type:  "posts",
-    omit: ["users"]
+    omit: ["feeds", "users"]
   },
-  {
+  /*{
     path: "links",
     index: "firebase",
     type: "links"
-  },
+  },*/
   {
     path: "wecite",
     index: "casetext",
