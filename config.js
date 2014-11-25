@@ -6,8 +6,7 @@
  * ElasticSearch server is at localhost:9200.
  */
 
-var S = require('string');
-var _ = require('lodash');
+var logger = require('./lib/logging').logger;
 
 /** Firebase Settings
  ***************************************************/
@@ -35,6 +34,10 @@ exports.ELASTICSEARCH_URL = ( process.env.BONSAI_URL ? process.env.BONSAI_URL : 
  * {Array}    omit:    list of fields that should not be indexed in ES (ignored if "parser" is specified)
  * {Function} filter:  if provided, only records that return true are indexed
  * {Function} parser:  if provided, the results of this function are passed to ES, rather than the raw data (fields is ignored if this is used)
+ * {object}   nested:  if provided, the type is assumed to be nested in another mapping in the index.  must have subkeys:
+ *  - {string} parentType: mapping to nest this mapping beneath
+ *  - {string} parentField: name of the field within parent doc that nesting is stored under
+ *  - {string} childIdField: "primary key" of nested documents, used to faciliatate "upsert" operation.
  *
  * To store your paths dynamically, rather than specifying them all here, you can store them in Firebase.
  * Format each path object with the same keys described above, and store the array of paths at whatever
@@ -114,5 +117,5 @@ function processBonsaiUrl(exports, url) {
    exports.ES_PORT = matches[4];
    exports.ES_USER = matches[1];
    exports.ES_PASS = matches[2];
-   console.log('Configured using BONSAI_URL environment variable', url, exports);
+   logger.info('Configured using BONSAI_URL environment variable', url, exports);
 }

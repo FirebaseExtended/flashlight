@@ -13,6 +13,7 @@
   "main": "app.js",
   "devDependencies": {},
   "dependencies": {
+    "bunyan": "^1.2.3",
     "colors": "~0.6.2",
     "elastic.js": "~1.1.1",
     "elasticsearch": "^2.4.3",
