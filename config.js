@@ -52,7 +52,7 @@ exports.paths = [
     path:  'users',
     index: 'firebase',
     type:  'users',
-    omit: ['email', 'welcomeEmailSent', 'bookmarks', 'upvotes']
+    omit: ['email', 'emailSettings', 'welcomeEmailSent', 'bookmarks', 'upvotes']
   },
   {  
     path:  'annotations',
