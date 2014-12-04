@@ -57,7 +57,7 @@ var confSchema = {
   },
   elasticsearchUrl: { 
     description: 'URL of the Elasticsearch server to connect to.',
-    'default': ( process.env.BONSAI_URL ? process.env.BONSAI_URL : 'http://localhost:9200' )
+    'default': process.env.BONSAI_URL || 'http://localhost:9200'
   },
   fbReq: {
     description: 'The Firebase path on which to listen for search requests.',
