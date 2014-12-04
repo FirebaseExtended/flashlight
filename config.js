@@ -47,7 +47,9 @@ exports.paths = [
   {
     path: 'links',
     index: 'firebase',
-    type: 'links'
+    type: 'links',
+    fields: ['content', 'description', 'created', 'originalUrl', 'providerDisplay',
+             'providerName', 'providerUrl', 'title', 'type', 'url']
   },
   {
     path: 'wecite',
