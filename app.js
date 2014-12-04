@@ -50,7 +50,7 @@ var launchService = function(siteConfig) {
     log: 'error'
   });
 
-  logger.info('Connected to ElasticSearch host %s'.grey, conf.elasticsearchUrl);
+  logger.info('Connected to ElasticSearch host %s', conf.elasticsearchUrl);
 
   var paths, fbPath;
   try {
@@ -64,7 +64,9 @@ var launchService = function(siteConfig) {
   
   fbutil.auth().then(function() {
     PathMonitor.process(esc, paths, fbPath);
-    SearchQueue.init(esc, conf.fbReq, conf.fbRes, conf.cleanupInterval);
+    if (!conf.disableSearchProxy) {
+      SearchQueue.init(esc, conf.fbReq, conf.fbRes, conf.cleanupInterval);
+    }
   })
   .catch(function(err) {
     logger.error('Could not authenticate to Firebase: ' + err);

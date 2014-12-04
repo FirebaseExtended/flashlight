@@ -14,7 +14,7 @@
   "devDependencies": {},
   "dependencies": {
     "bunyan": "^1.2.3",
-    "colors": "~0.6.2",
+    "bunyan-format": "^0.1.1",
     "elasticsearch": "^2.4.3",
     "firebase": "~1.1.2",
     "firebase-token-generator": "^2.0.0",
