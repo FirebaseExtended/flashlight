@@ -6,22 +6,8 @@
  * ElasticSearch server is at localhost:9200.
  */
 
-var logger = require('./lib/logging').logger;
-
-/** Firebase Settings
- ***************************************************/
-
-// The path in your Firebase where clients will write search requests
-exports.FB_REQ   = process.env.FB_REQ || 'search/request';
-
-// The path in your Firebase where this app will write the results
-exports.FB_RES   = process.env.FB_RES || 'search/response';
-
-/** ElasticSearch Settings
- *********************************************/
-
-exports.ELASTICSEARCH_URL = ( process.env.BONSAI_URL ? process.env.BONSAI_URL : 'http://localhost:9200' );
-
+var logger = require('./lib/logging').logger,
+S = require('string');
 
 /** Paths to Monitor
  *
@@ -100,25 +86,3 @@ exports.paths = [
     }
   }
 ];
-
-// Paths can also be stored in Firebase and loaded using FB_PATHS!
-exports.FB_PATH = process.env.FB_PATHS || null;
-
-
-/** Config Options
- ***************************************************/
-
-// How often should the script remove unclaimed search results? probably just leave this alone
-exports.CLEANUP_INTERVAL =
-   process.env.NODE_ENV === 'production'?
-      3600*1000 /* once an hour */ :
-      60*1000 /* once a minute */;
-
-function processBonsaiUrl(exports, url) {
-   var matches = url.match(/^https?:\/\/([^:]+):([^@]+)@([^:]+):([^/]+)\/?$/);
-   exports.ES_HOST = matches[3];
-   exports.ES_PORT = matches[4];
-   exports.ES_USER = matches[1];
-   exports.ES_PASS = matches[2];
-   logger.info('Configured using BONSAI_URL environment variable', url, exports);
-}
