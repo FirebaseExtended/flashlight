@@ -46,11 +46,11 @@ var conf = optometrist.get({
 var launchService = function(siteConfig) {
   // connect to ElasticSearch
   var esc = new es.Client({
-    host: conf.ELASTICSEARCH_URL,
+    host: conf.elasticsearchUrl,
     log: 'error'
   });
 
-  logger.info('Connected to ElasticSearch host %s'.grey, conf.ELASTICSEARCH_URL);
+  logger.info('Connected to ElasticSearch host %s'.grey, conf.elasticsearchUrl);
 
   var paths, fbPath;
   try {
@@ -64,7 +64,7 @@ var launchService = function(siteConfig) {
   
   fbutil.auth().then(function() {
     PathMonitor.process(esc, paths, fbPath);
-    SearchQueue.init(esc, conf.FB_REQ, conf.FB_RES, conf.CLEANUP_INTERVAL);
+    SearchQueue.init(esc, conf.fbReq, conf.fbRes, conf.cleanupInterval);
   })
   .catch(function(err) {
     logger.error('Could not authenticate to Firebase: ' + err);
@@ -73,7 +73,7 @@ var launchService = function(siteConfig) {
 }
 
 if (require.main===module) {
-  launchService(siteConf);
+  launchService();
 }
 else {
   exports.start = launchService;
