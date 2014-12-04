@@ -6,12 +6,42 @@
 
 var es = require('elasticsearch'),
    optometrist   = require('optometrist'),
-   conf          = require('./config'),
    fbutil        = require('./lib/fbutil'),
    PathMonitor   = require('./lib/PathMonitor'),
    SearchQueue   = require('./lib/SearchQueue'),
    logger        = require('./lib/logging').logger;
 
+var conf = optometrist.get({
+  firebaseUrl: {
+    description: 'URL where the Firebase instance lives.',
+    required: true 
+  },
+  pathsConfig: {
+    description: 'Location where configuration of listeners is stored.',
+    required: true,
+  },
+  disableSearchProxy: {
+    description: 'Turn off the search-path functionality that proxies search requests through Firebase.',
+    'default': false
+  },
+  elasticsearchUrl: { 
+    description: 'URL of the Elasticsearch server to connect to.',
+    'default': ( process.env.BONSAI_URL ? process.env.BONSAI_URL : 'http://localhost:9200' )
+  },
+  fbReq: {
+    description: 'The Firebase path on which to listen for search requests.',
+    'default': 'search/request'
+  },
+  fbRes: {
+    description: 'The Firebase path to which search responses should be written',
+    'default': 'search/response'
+  },
+  cleanupInterval: {
+    /* 1 hour in production, 1 minute else */
+    description: 'The frequency with which we should eviscerate search responses to limit clutter.',
+    'default': ( process.env.NODE_ENV === 'production' ? 3600*1000 : 60*1000 )
+  }
+});
 
 var launchService = function(siteConfig) {
   // connect to ElasticSearch
@@ -21,9 +51,19 @@ var launchService = function(siteConfig) {
   });
 
   logger.info('Connected to ElasticSearch host %s'.grey, conf.ELASTICSEARCH_URL);
+
+  var paths, fbPath;
+  try {
+    paths = require( conf.pathsConfig );
+  }
+  catch () {
+    logger.warn("Could not parse " + conf.pathsConfig
+                + ", treating as Firebase location!");
+    fbPath = conf.pathsConfig;
+  }
   
   fbutil.auth().then(function() {
-    PathMonitor.process(esc, conf.paths, conf.FB_PATH);
+    PathMonitor.process(esc, paths, fbPath);
     SearchQueue.init(esc, conf.FB_REQ, conf.FB_RES, conf.CLEANUP_INTERVAL);
   })
   .catch(function(err) {
@@ -33,7 +73,6 @@ var launchService = function(siteConfig) {
 }
 
 if (require.main===module) {
-  var siteConf = require(process.argv[0]);
   launchService(siteConf);
 }
 else {
