@@ -11,7 +11,38 @@ var es = require('elasticsearch'),
    SearchQueue   = require('./lib/SearchQueue'),
    logger        = require('./lib/logging').logger;
 
-var conf = optometrist.get({
+var launchService = function(conf) {
+  var paths, fbPath;
+  try {
+    paths = require( conf.pathsConfig ).paths;
+  }
+  catch (err) {
+    logger.warn("Could not parse " + conf.pathsConfig
+                + ", treating as Firebase location!");
+    fbPath = conf.pathsConfig;
+  }
+  
+  fbutil.auth().then(function() {
+    // connect to ElasticSearch
+    var esc = new es.Client({
+      host: conf.elasticsearchUrl,
+      log: 'error'
+    });
+    
+    logger.info('Connected to ElasticSearch host %s', conf.elasticsearchUrl);
+
+    PathMonitor.process(esc, paths, fbPath);
+    if (!conf.disableSearchProxy) {
+      SearchQueue.init(esc, conf.fbReq, conf.fbRes, conf.cleanupInterval);
+    }
+  })
+  .catch(function(err) {
+    logger.error('Could not authenticate to Firebase: ' + err);
+    return; 
+  });
+}
+
+var confSchema = {
   firebaseUrl: {
     description: 'URL where the Firebase instance lives.',
     required: true 
@@ -38,45 +69,16 @@ var conf = optometrist.get({
   },
   cleanupInterval: {
     /* 1 hour in production, 1 minute else */
-    description: 'The frequency with which we should eviscerate search responses to limit clutter.',
+    description: 'The frequency with which we should eviscerate search responses to limit clutter (milliseconds).',
     'default': ( process.env.NODE_ENV === 'production' ? 3600*1000 : 60*1000 )
   }
-});
+};
 
-var launchService = function(siteConfig) {
-  // connect to ElasticSearch
-  var esc = new es.Client({
-    host: conf.elasticsearchUrl,
-    log: 'error'
-  });
-
-  logger.info('Connected to ElasticSearch host %s', conf.elasticsearchUrl);
-
-  var paths, fbPath;
-  try {
-    paths = require( conf.pathsConfig ).paths;
-  }
-  catch (err) {
-    logger.warn("Could not parse " + conf.pathsConfig
-                + ", treating as Firebase location!");
-    fbPath = conf.pathsConfig;
-  }
-  
-  fbutil.auth().then(function() {
-    PathMonitor.process(esc, paths, fbPath);
-    if (!conf.disableSearchProxy) {
-      SearchQueue.init(esc, conf.fbReq, conf.fbRes, conf.cleanupInterval);
-    }
-  })
-  .catch(function(err) {
-    logger.error('Could not authenticate to Firebase: ' + err);
-    return; 
-  });
+try {
+  var settings = optometrist.get(confSchema);
+  launchService(settings);
 }
-
-if (require.main===module) {
-  launchService();
-}
-else {
-  exports.start = launchService;
+catch (err) {
+  console.log(optometrist.usage('app.js', 'Run Flashlight Firebase/ES sync daemon.', confSchema));
+  process.exit(1);
 }
