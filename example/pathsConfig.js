@@ -1,5 +1,3 @@
-var S = require('string');
-
 /** Paths to Monitor
  *
  * Each path can have these keys:
@@ -18,58 +16,23 @@ var S = require('string');
  *  - {string} parentType: mapping to nest this mapping beneath
  *  - {string} parentField: name of the field within parent doc that nesting is stored under
  *  - {string} childIdField: "primary key" of nested documents, used to faciliatate "upsert" operation.
+ *
+ * To store your paths dynamically, rather than specifying them all here, you can store them in Firebase.
+ * Format each path object with the same keys described above, and store the array of paths at whatever
+ * location you specified in the PATHS_CONFIG variable. Be sure to restrict that data in your Security Rules.
  ****************************************************/
 
 exports.paths = [
   {
-    path:  'users',
-    index: 'firebase',
-    type:  'users',
-    omit: ['email', 'emailSettings', 'welcomeEmailSent', 'bookmarks', 'upvotes']
-  },
-  {  
-    path:  'annotations',
-    index: 'firebase',
-    type:  'annotations'
-  },
-  { 
-    path:  'communities',
-    index: 'firebase',
-    type:  'communities',
-    omit: ['featuredFollowers', 'followers']
+    path: "users",
+    index: "firebase",
+    type: "user"
   },
   {
-    path:  'posts',
-    index: 'firebase',
-    type:  'posts',
-    omit: ['feeds', 'users']
-  },
-  {
-    path: 'links',
-    index: 'firebase',
-    type: 'links'
-  },
-  {
-    path: 'wecite',
-    index: 'casetext',
-    type: 'wecites',
-    nested: { 
-      parentType: 'document', 
-      parentField: 'wecites',
-      childIdField: 'destinationDocId'
-    },
-    parser: function(data) {
-      return Object.keys(data).map( function(d) {
-        var retval = data[d];
-        if (retval.edits) {
-          delete retval.edits;
-        }
-
-        retval.destinationDocId = d;
-        retval.description = retval.description ? S(retval.description).stripTags().s : null;
-        
-        return retval;
-      });
-    }
+    path: "messages",
+    index: "firebase",
+    type: "message",
+    fields: ['msg', 'name'],
+    filter: function(data) { return data.name !== 'system'; }
   }
 ];
