@@ -54,9 +54,9 @@ var launchService = function(siteConfig) {
 
   var paths, fbPath;
   try {
-    paths = require( conf.pathsConfig );
+    paths = require( conf.pathsConfig ).paths;
   }
-  catch () {
+  catch (err) {
     logger.warn("Could not parse " + conf.pathsConfig
                 + ", treating as Firebase location!");
     fbPath = conf.pathsConfig;
