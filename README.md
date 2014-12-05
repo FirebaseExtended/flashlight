@@ -7,6 +7,15 @@ This script can:
  - monitor multiple Firebase paths and index data in real time
  - communicates with client completely via Firebase (client pushes search terms to `search/request` and reads results from `search/result`)
  - clean up old, outdated requests
+ 
+Casetext Specific Instructions
+==============================
+ - clone the repo
+ - Install/start elasticsearch
+ - Initialize your index with "curl -X POST http://localhost:9200/firebase"
+ - Set FB_NAME to the name of your firebase (e.g., casetext-richard)
+ - Start the app, either with "node app.js" or with "foreman start"
+
 
 Getting Started
 ===============

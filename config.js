@@ -1,47 +1,9 @@
-/**
- * This config file is provided as a convenience for development. You can either
- * set the environment variables on your server or modify the values here.
- *
- * At a minimum, you must set FB_URL and Paths to Monitor. Everything else is optional, assuming your
- * ElasticSearch server is at localhost:9200.
- */
-
-/** Firebase Settings
- ***************************************************/
-
-// Your Firebase instance where we will listen and write search results
-exports.FB_URL   = 'https://' + process.env.FB_NAME + '.firebaseio.com/';
-
-// Either your Firebase secret or a token you create with no expiry, used to authenticate
-// To Firebase and access search data.
-exports.FB_TOKEN = process.env.FB_TOKEN || null;
-
-// The path in your Firebase where clients will write search requests
-exports.FB_REQ   = process.env.FB_REQ || 'search/request';
-
-// The path in your Firebase where this app will write the results
-exports.FB_RES   = process.env.FB_RES || 'search/response';
-
-/** ElasticSearch Settings
- *********************************************/
-
-if( process.env.BONSAI_URL ) {
-   processBonsaiUrl(exports, process.env.BONSAI_URL);
-}
-else {
-   // ElasticSearch server's host URL
-   exports.ES_HOST  = process.env.ES_HOST || 'localhost';
-
-   // ElasticSearch server's host port
-   exports.ES_PORT  = process.env.ES_PORT || '9200';
-
-   // ElasticSearch username for http auth
-   exports.ES_USER  = process.env.ES_USER || null;
-
-   // ElasticSearch password for http auth
-   exports.ES_PASS  = process.env.ES_PASS || null;
-}
-
+var S = require('string'),
+   Q = require('q'),
+   AWS = require('aws-sdk');
+    
+var s3 = new AWS.S3();
+AWS.config.update({region: 'us-east-1'});
 
 /** Paths to Monitor
  *
@@ -50,49 +12,102 @@ else {
  *                     would monitor https://<instance>.firebaseio.com/users/profiles
  * {string}   index:   [required] the name of the ES index to write data into
  * {string}   type:    [required] name of the ES object type this document will be stored as
- * {Array}    fields:  list of fields to be monitored and indexed (defaults to all fields, ignored if "parser" is specified)
+ * {Array}    fields:  list of fields to be monitored and indexed (defaults to all fields, ignored if "parser" 
+ *                     is specified)
  * {Array}    omit:    list of fields that should not be indexed in ES (ignored if "parser" is specified)
  * {Function} filter:  if provided, only records that return true are indexed
- * {Function} parser:  if provided, the results of this function are passed to ES, rather than the raw data (fields is ignored if this is used)
- *
- * To store your paths dynamically, rather than specifying them all here, you can store them in Firebase.
- * Format each path object with the same keys described above, and store the array of paths at whatever
- * location you specified in the FB_PATHS variable. Be sure to restrict that data in your Security Rules.
+ * {Function} parser:  if provided, the results of this function are passed to ES, rather than the raw data 
+ *                     (fields is ignored if this is used)
+ * {object}   nested:  if provided, the type is assumed to be nested in another mapping in the index.  
+ *                     must have subkeys:
+ *  - {string} parentType: mapping to nest this mapping beneath
+ *  - {string} parentField: name of the field within parent doc that nesting is stored under
+ *  - {string} childIdField: "primary key" of nested documents, used to faciliatate "upsert" operation.
  ****************************************************/
 
 exports.paths = [
-   {
-      path:  "users",
-      index: "firebase",
-      type:  "user"
-   },
-   {
-      path:  "messages",
-      index: "firebase",
-      type:  "message",
-      fields: ['msg', 'name'],
-      filter: function(data) { return data.name !== 'system'; }
-   }
+  {
+    path:  'users',
+    index: 'firebase',
+    type:  'users',
+    omit: ['email', 'emailSettings', 'welcomeEmailSent', 'bookmarks', 'upvotes']
+  },
+  {  
+    path:  'annotations',
+    index: 'firebase',
+    type:  'annotations'
+  },
+  { 
+    path:  'communities',
+    index: 'firebase',
+    type:  'communities',
+    omit: ['featuredFollowers', 'followers']
+  },
+  {
+    path:  'posts',
+    index: 'firebase',
+    type:  'posts',
+    omit: ['feeds', 'users']
+  },
+  {
+    path: 'links',
+    index: 'firebase',
+    type: 'links',
+    parser: function(data) {
+      var fields = ['content', 'description', 'created', 'originalUrl', 'providerDisplay',
+                    'providerName', 'providerUrl', 'title', 'type', 'url'];
+
+      return Q.try( function() {
+        var out = {};
+        fields.forEach( function(f) {
+          if (data.hasOwnProperty(f)) {
+            if (typeof(data[f])==='string') {
+              out[f] = S(data[f]).stripTags().s;
+            }
+            else {
+              out[f] = data[f];
+            }
+          }
+        });
+        
+        if (typeof( out.content )==='object') {
+          return Q.ninvoke(s3, 'getObject', { 
+            Bucket: out.content.s3.bucketName, 
+            Key: out.content.s3.key
+          }).then( function(payload) {
+            out.content = S(payload.Body.toString('utf-8')).stripTags().s;
+            return out;
+          });
+        }
+        else {
+          return out;
+        }
+      });
+    }
+  },
+  {
+    path: 'wecite',
+    index: 'casetext',
+    type: 'wecites',
+    nested: { 
+      parentType: 'document', 
+      parentField: 'wecites',
+      childIdField: 'destinationDocId'
+    },
+    parser: function(data) {
+      return Q.try( function() {
+        return Object.keys(data).map( function(d) {
+          var retval = data[d];
+          if (retval.edits) {
+            delete retval.edits;
+          }
+          
+          retval.destinationDocId = d;
+          retval.description = retval.description ? S(retval.description).stripTags().s : null;
+          
+          return retval;
+        });
+      });
+    }
+  }
 ];
-
-// Paths can also be stored in Firebase and loaded using FB_PATHS!
-exports.FB_PATH = process.env.FB_PATHS || null;
-
-
-/** Config Options
- ***************************************************/
-
-// How often should the script remove unclaimed search results? probably just leave this alone
-exports.CLEANUP_INTERVAL =
-   process.env.NODE_ENV === 'production'?
-      3600*1000 /* once an hour */ :
-      60*1000 /* once a minute */;
-
-function processBonsaiUrl(exports, url) {
-   var matches = url.match(/^https?:\/\/([^:]+):([^@]+)@([^/]+)\/?$/);
-   exports.ES_HOST = matches[3];
-   exports.ES_PORT = 80;
-   exports.ES_USER = matches[1];
-   exports.ES_PASS = matches[2];
-   console.log('Configured using BONSAI_URL environment variable', url, exports);
-}
