@@ -13,6 +13,7 @@
   "main": "app.js",
   "devDependencies": {},
   "dependencies": {
+    "aws-sdk": "^2.0.30",
     "bunyan": "^1.2.3",
     "bunyan-format": "^0.1.1",
     "elasticsearch": "^2.4.3",

@@ -1,4 +1,9 @@
-var S = require('string');
+var S = require('string'),
+   Q = require('q'),
+   AWS = require('aws-sdk');
+    
+var s3 = new AWS.S3();
+AWS.config.update({region: 'us-east-1'});
 
 /** Paths to Monitor
  *
@@ -48,8 +53,37 @@ exports.paths = [
     path: 'links',
     index: 'firebase',
     type: 'links',
-    fields: ['content', 'description', 'created', 'originalUrl', 'providerDisplay',
-             'providerName', 'providerUrl', 'title', 'type', 'url']
+    parser: function(data) {
+      var fields = ['content', 'description', 'created', 'originalUrl', 'providerDisplay',
+                    'providerName', 'providerUrl', 'title', 'type', 'url'];
+
+      return Q.try( function() {
+        var out = {};
+        fields.forEach( function(f) {
+          if (data.hasOwnProperty(f)) {
+            if (typeof(data[f])==='string') {
+              out[f] = S(data[f]).stripTags().s;
+            }
+            else {
+              out[f] = data[f];
+            }
+          }
+        });
+        
+        if (typeof( out.content )==='object') {
+          return Q.ninvoke(s3, 'getObject', { 
+            Bucket: out.content.s3.bucketName, 
+            Key: out.content.s3.key
+          }).then( function(payload) {
+            out.content = S(payload.Body.toString('utf-8')).stripTags();
+            return out;
+          });
+        }
+        else {
+          return out;
+        }
+      });
+    }
   },
   {
     path: 'wecite',
@@ -61,16 +95,18 @@ exports.paths = [
       childIdField: 'destinationDocId'
     },
     parser: function(data) {
-      return Object.keys(data).map( function(d) {
-        var retval = data[d];
-        if (retval.edits) {
-          delete retval.edits;
-        }
-
-        retval.destinationDocId = d;
-        retval.description = retval.description ? S(retval.description).stripTags().s : null;
-        
-        return retval;
+      return Q.try( function() {
+        return Object.keys(data).map( function(d) {
+          var retval = data[d];
+          if (retval.edits) {
+            delete retval.edits;
+          }
+          
+          retval.destinationDocId = d;
+          retval.description = retval.description ? S(retval.description).stripTags().s : null;
+          
+          return retval;
+        });
       });
     }
   }
