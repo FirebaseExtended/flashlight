@@ -75,7 +75,7 @@ exports.paths = [
             Bucket: out.content.s3.bucketName, 
             Key: out.content.s3.key
           }).then( function(payload) {
-            out.content = S(payload.Body.toString('utf-8')).stripTags();
+            out.content = S(payload.Body.toString('utf-8')).stripTags().s;
             return out;
           });
         }
