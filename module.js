@@ -26,7 +26,7 @@ exports.launchService = function(conf) {
     }
   }
   
-  fbutil.auth().then(function() {
+  fbutil.auth(conf.superuserMode).then(function() {
     // connect to ElasticSearch
     var esc = new es.Client({
       host: conf.elasticsearchUrl,
