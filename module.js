@@ -84,7 +84,7 @@ var confSchema = {
 };
 
 exports.usage = function() { 
-  return optometrist.usage(__filename, 'Run Flashlight Firebase/ES sync daemon.', confSchema);
+  return optometrist.usage(require.main.filename, 'Run Flashlight Firebase/ES sync daemon.', confSchema);
 };
 
 exports.configure = function(overrides) {
