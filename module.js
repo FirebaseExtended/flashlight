@@ -11,13 +11,19 @@ var _ = require('lodash'),
 
 exports.launchService = function(conf) {
   var paths, fbPath;
-  try {
-    paths = require( conf.pathsConfig ).paths;
+
+  if (typeof(conf.pathsConfig)==='object') {
+    paths = conf.pathsConfig;
   }
-  catch (err) {
-    logger.warn("Could not parse " + conf.pathsConfig
-                + ", treating as Firebase location!");
-    fbPath = conf.pathsConfig;
+  else {
+    try {
+      paths = require( conf.pathsConfig ).paths;
+    }
+    catch (err) {
+      logger.warn("Could not parse " + conf.pathsConfig
+                  + ", treating as Firebase location!");
+      fbPath = conf.pathsConfig;
+    }
   }
   
   fbutil.auth().then(function() {
