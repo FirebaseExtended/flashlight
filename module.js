@@ -63,6 +63,10 @@ var confSchema = {
     description: 'URL of the Elasticsearch server to connect to.',
     'default': process.env.BONSAI_URL || 'http://localhost:9200'
   },
+  superuserMode: {
+    description: 'Pass FIREBASE_AUTH_SECRET directly as auth token, bypassing security rules.',
+    'default': false
+  },
   fbReq: {
     description: 'The Firebase path on which to listen for search requests.',
     'default': 'search/request'
