@@ -12,6 +12,6 @@ try {
   );
 }
 catch (err) {
-  console.log(optometrist.usage('app.js', 'Run Flashlight Firebase/ES sync daemon.', flashlight.confSchema));
+  console.log(flashlight.usage());
   process.exit(1);
 }

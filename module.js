@@ -52,7 +52,8 @@ var confSchema = {
     required: true 
   },
   pathsConfig: {
-    description: 'Location where configuration of listeners is stored.',
+    description: 'Either a javascript array defining the listeners, or a string containing the location ' +
+      'where configuration of listeners is stored.',
     required: true,
   },
   disableSearchProxy: {
@@ -82,7 +83,9 @@ var confSchema = {
   }
 };
 
-exports.confSchema = confSchema;
+exports.usage = function() { 
+  return optometrist.usage(__filename, 'Run Flashlight Firebase/ES sync daemon.', confSchema);
+};
 
 exports.configure = function(overrides) {
 
