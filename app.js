@@ -37,7 +37,7 @@ var launchService = function(conf) {
     }
   })
   .catch(function(err) {
-    logger.error('Could not authenticate to Firebase: ' + err);
+    logger.error('Could not initialize flashlight: ' + err);
     return; 
   });
 }
