@@ -4,14 +4,14 @@
  * @version 0.3, 3 June 2014
  */
 
-var flashlight = require('./module.js');
+var flue = require('./module.js');
 
 try {
-  flashlight.launchService(
-    flashlight.configure()
+  flue.launchService(
+    flue.configure()
   );
 }
 catch (err) {
-  console.log(flashlight.usage());
+  console.log(flue.usage());
   process.exit(1);
 }

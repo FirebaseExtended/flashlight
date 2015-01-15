@@ -41,7 +41,7 @@ exports.launchService = function(conf) {
     }
   })
   .catch(function(err) {
-    logger.error('Could not initialize flashlight: ' + err);
+    logger.error('Could not initialize flue: ' + err);
     return; 
   });
 };
@@ -84,7 +84,7 @@ var confSchema = {
 };
 
 exports.usage = function() { 
-  return optometrist.usage(require.main.filename, 'Run Flashlight Firebase/ES sync daemon.', confSchema);
+  return optometrist.usage(require.main.filename, 'Run flue Firebase/ES sync daemon.', confSchema);
 };
 
 exports.configure = function(overrides) {
