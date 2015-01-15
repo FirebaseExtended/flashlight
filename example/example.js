@@ -25,7 +25,7 @@
    // display search results
    function doSearch(index, type, query) {
       var ref = new Firebase(URL+'/search');
-      var key = ref.child('request').push({ index: index, type: type, query: query }).name();
+      var key = ref.child('request').push({ index: index, type: type, query: query }).key();
       console.log('search', key, { index: index, type: type, query: query });
       ref.child('response/'+key).on('value', showResults);
    }
@@ -33,7 +33,7 @@
    function showResults(snap) {
       if( snap.val() === null ) { return; } // wait until we get data
       var dat = snap.val();
-//      console.log('result', snap.name(), snap.val());
+//      console.log('result', snap.key(), snap.val());
       snap.ref().off('value', showResults);
       snap.ref().remove();
       var $pair = $('#results')
