@@ -1,4 +1,4 @@
-Flashlight
+flue
 ==========
 
 A pluggable integration with ElasticSearch to provide advanced content searches in Firebase.
@@ -12,7 +12,7 @@ Getting Started
 ===============
 
  - Install and run [ElasticSearch](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/setup.html) or add [Bonsai service](https://addons.heroku.com/bonsai#starter) via Heroku
- - `git clone https://github.com/firebase/flashlight`
+ - `git clone https://github.com/casetext/flue`
  - `npm install`
  - edit config.js (see comments at the top, you must set FB_URL at a minimum)
  - `node app.js` (run the app)
@@ -43,7 +43,7 @@ Check out [this great tutorial](http://okfnlabs.org/blog/2013/07/01/elasticsearc
 Deploy to Heroku
 ================
 
- - `cd flashlight`
+ - `cd flue`
  - `heroku login`
  - `heroku create` (add heroku to project)
  - `heroku addons:add bonsai` (install bonsai)
@@ -63,7 +63,7 @@ After you've deployed to Heroku, you need to create your initial index name to p
 Support
 =======
 
-Submit questions or bugs using the [issue tracker](https://github.com/firebase/flashlight).
+Submit questions or bugs using the [issue tracker](https://github.com/casetext/flue).
 
 For Firebase-releated questions, try the [mailing list](https://groups.google.com/forum/#!forum/firebase-talk).
 
