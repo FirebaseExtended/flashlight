@@ -26,7 +26,7 @@ exports.launchService = function(conf) {
     }
   }
   
-  fbutil.auth(conf.superuserMode).then(function() {
+  fbutil.auth(conf.superuserMode).then(function(fbRoot) {
     // connect to ElasticSearch
     var esc = new es.Client({
       host: conf.elasticsearchUrl,
@@ -35,9 +35,9 @@ exports.launchService = function(conf) {
     
     logger.info('Connected to ElasticSearch host %s', conf.elasticsearchUrl);
 
-    PathMonitor.process(esc, paths, fbPath);
+    PathMonitor.process(esc, fbRoot, paths, fbPath);
     if (!conf.disableSearchProxy) {
-      SearchQueue.init(esc, conf.fbReq, conf.fbRes, conf.cleanupInterval);
+      SearchQueue.init(esc, fbRoot.child(conf.fbReq), fbRoot.child(conf.fbRes), conf.cleanupInterval);
     }
   })
   .catch(function(err) {
