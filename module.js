@@ -34,10 +34,15 @@ exports.launchService = function(conf) {
     });
     
     logger.info('Connected to ElasticSearch host %s', conf.elasticsearchUrl);
-
-    PathMonitor.process(esc, fbRoot, paths, fbPath);
+    
+    PathMonitor.process(esc, fbRoot.root, paths, fbPath);
     if (!conf.disableSearchProxy) {
-      SearchQueue.init(esc, fbRoot.child(conf.fbReq), fbRoot.child(conf.fbRes), conf.cleanupInterval);
+      SearchQueue.init(
+        esc, 
+        fbRoot.root.child(conf.fbReq), 
+        fbRoot.root.child(conf.fbRes), 
+        conf.cleanupInterval
+      );
     }
   })
   .catch(function(err) {
