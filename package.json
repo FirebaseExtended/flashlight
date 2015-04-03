@@ -1,6 +1,6 @@
 {
   "name": "flue",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "A search utility for Firebase",
   "keywords": ["firebase", "elasticsearch"],
   "homepage": "https://github.com/firebase/flue",
