@@ -31,10 +31,9 @@
    }
 
    function showResults(snap) {
-      if( snap.val() === null ) { return; } // wait until we get data
+      if( !snap.exists() ) { return; } // wait until we get data
       var dat = snap.val();
-//      console.log('result', snap.name(), snap.val());
-      snap.ref().off('value', showResults);
+      snap.ref().off('value');
       snap.ref().remove();
       var $pair = $('#results')
          .text(JSON.stringify(dat, null, 2))
