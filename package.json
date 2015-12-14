@@ -13,10 +13,10 @@
   "main": "app.js",
   "devDependencies": {},
   "dependencies": {
-    "elastic.js": "~1.1.1",
-    "colors": "~0.6.2",
     "JQDeferred": "~1.9.1",
-    "firebase": "~2.2.9",
-    "elasticsearch": "^10.0.1"
+    "colors": "~0.6.2",
+    "elastic.js": "~1.1.1",
+    "elasticsearch": "^10.0.1",
+    "firebase": "^2.3.2"
   }
 }
