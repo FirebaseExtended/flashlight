@@ -17,6 +17,6 @@
     "colors": "~0.6.2",
     "JQDeferred": "~1.9.1",
     "firebase": "~2.2.9",
-    "elasticsearchclient": "~0.5.3"
+    "elasticsearch": "^10.0.1"
   }
 }
