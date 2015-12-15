@@ -13,8 +13,9 @@
       e.preventDefault();
       var $form = $(this);
       var term = $form.find('[name="term"]').val();
+      var words = $form.find('[name="words"]').is(':checked');
       if( term ) {
-         doSearch($form.find('[name="index"]').val(), $form.find('[name="type"]:checked').val(), term);
+         doSearch($form.find('[name="index"]').val(), $form.find('[name="type"]:checked').val(), makeTerm(term, words));
       }
       else {
          $('#results').text('');
@@ -33,7 +34,6 @@
    function showResults(snap) {
       if( snap.val() === null ) { return; } // wait until we get data
       var dat = snap.val();
-//      console.log('result', snap.name(), snap.val());
       snap.ref().off('value', showResults);
       snap.ref().remove();
       var $pair = $('#results')
