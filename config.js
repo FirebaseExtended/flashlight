@@ -64,8 +64,8 @@ exports.paths = [
    {
       path:  "users",
       index: "firebase",
-      type:  "user",
-      fields: ["profile.email","profile.nickname"]
+      type:  "user"
+      // fields: ["profile.email","profile.nickname"]
    }
    // {
    //    path:  "invitations",
