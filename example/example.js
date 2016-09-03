@@ -7,10 +7,10 @@
   // Set the configuration for your app
   // TODO: Replace with your project's config object
   var config = {
-    apiKey: '<your-api-key>',
-    authDomain: '<your-auth-domain>',
-    databaseURL: '<your-database-url>',
-    storageBucket: '<your-storage-bucket>'
+    apiKey: "AIzaSyCBMUNoMXdejqSaRGyxJT2Lkoj4QOrWmAQ",
+    authDomain: "radiant-fire-8049.firebaseapp.com",
+    databaseURL: "https://radiant-fire-8049.firebaseio.com",
+    storageBucket: "radiant-fire-8049.appspot.com",
   };
 
   // TODO: Replace this with the path to your ElasticSearch queue

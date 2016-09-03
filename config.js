@@ -10,7 +10,7 @@
  ***************************************************/
 
 // Your Firebase instance where we will listen and write search results
-exports.FB_URL   = 'https://' + process.env.FB_NAME + '.firebaseio.com';
+exports.FB_URL   = 'https://radiant-fire-8049.firebaseio.com/';
 
 // The path in your Firebase where clients will write search requests
 exports.FB_REQ   = process.env.FB_REQ || 'search/request';
@@ -20,7 +20,7 @@ exports.FB_RES   = process.env.FB_RES || 'search/response';
 
 // See https://firebase.google.com/docs/server/setup. for how to
 // auto-generate this config json ...
-exports.FB_SERVICEACCOUNT = process.env.FB_SERVICEJSONPATH;
+exports.FB_SERVICEACCOUNT = 'sss.json';
 
 /** ElasticSearch Settings
  *********************************************/
@@ -30,16 +30,16 @@ if( process.env.BONSAI_URL ) {
 }
 else {
    // ElasticSearch server's host URL
-   exports.ES_HOST  = process.env.ES_HOST || 'localhost';
+   exports.ES_HOST  = process.env.ES_HOST || 'banyan-9927252.us-east-1.bonsai.io';
 
    // ElasticSearch server's host port
    exports.ES_PORT  = process.env.ES_PORT || '9200';
 
    // ElasticSearch username for http auth
-   exports.ES_USER  = process.env.ES_USER || null;
+   exports.ES_USER  = process.env.ES_USER || '8rwmj75xga';
 
    // ElasticSearch password for http auth
-   exports.ES_PASS  = process.env.ES_PASS || null;
+   exports.ES_PASS  = process.env.ES_PASS || 'vjoo6fwk9x';
 }
 
 
@@ -64,15 +64,15 @@ exports.paths = [
    {
       path:  "users",
       index: "firebase",
-      type:  "user"
-   },
-   {
-      path:  "messages",
-      index: "firebase",
-      type:  "message",
-      fields: ['msg', 'name'],
-      filter: function(data) { return data.name !== 'system'; }
+      type:  "user",
+      fields: ["profile.email","profile.nickname"]
    }
+   // {
+   //    path:  "invitations",
+   //    index: "firebase",
+   //    type:  "invitation",
+   //    fields: ['receiverAppName', 'senderAppName', 'senderUid', 'invitationId']
+   // }
 ];
 
 // Paths can also be stored in Firebase and loaded using FB_PATHS!
@@ -83,10 +83,10 @@ exports.FB_PATH = process.env.FB_PATHS || null;
  ***************************************************/
 
 // How often should the script remove unclaimed search results? probably just leave this alone
-exports.CLEANUP_INTERVAL =
-   process.env.NODE_ENV === 'production'?
-      3600*1000 /* once an hour */ :
-      60*1000 /* once a minute */;
+exports.CLEANUP_INTERVAL = 3600*1000;
+   // process.env.NODE_ENV === 'production'?
+   //    3600*1000 /* once an hour */ :
+   //    60*1000 /* once a minute */;
 
 function processBonsaiUrl(exports, url) {
    var matches = url.match(/^https?:\/\/([^:]+):([^@]+)@([^/]+)\/?$/);
