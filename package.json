@@ -18,5 +18,8 @@
     "elastic.js": "^1.2.0",
     "elasticsearch": "^10.0.1",
     "firebase": "^3.2.0"
+  },
+  "scripts": {
+    "start": "node app.js"
   }
 }
