@@ -54,6 +54,7 @@ else {
  * {Array}    omit:    list of fields that should not be indexed in ES (ignored if "parser" is specified)
  * {Function} filter:  if provided, only records that return true are indexed
  * {Function} parser:  if provided, the results of this function are passed to ES, rather than the raw data (fields is ignored if this is used)
+ * {Object}   toArray: if provided, each key in toArray represents a firebase path. All the objects in that path will be concatenated into an array on objects which will be indexed by ES
  *
  * To store your paths dynamically, rather than specifying them all here, you can store them in Firebase.
  * Format each path object with the same keys described above, and store the array of paths at whatever
