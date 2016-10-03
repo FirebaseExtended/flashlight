@@ -59,12 +59,11 @@ if (process.env.BONSAI_URL) {
  * location you specified in the FB_PATHS variable. Be sure to restrict that data in your Security Rules.
  ****************************************************/
 
-exports.paths = [
-	// {
-	// 	path: "users",
-	// 	index: "firebase",
-	// 	type: "user"
-	// }
+exports.paths = [{
+		path: "users",
+		index: "firebase",
+		type: "user"
+	}
 	// ,
 	// {
 	//    path:  "messages",

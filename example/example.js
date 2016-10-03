@@ -1,83 +1,110 @@
 (function ($) {
-  "use strict";
+	"use strict";
 
-  /**====== SET ME =====**/
-  /**====== SET ME =====**/
-  /**====== SET ME =====**/
-  // Set the configuration for your app
-  // TODO: Replace with your project's config object
-  var config = {
-    apiKey: '<your-api-key>',
-    authDomain: '<your-auth-domain>',
-    databaseURL: '<your-database-url>',
-    storageBucket: '<your-storage-bucket>'
-  };
+	/**====== SET ME =====**/
+	/**====== SET ME =====**/
+	/**====== SET ME =====**/
+	// Set the configuration for your app
+	// TODO: Replace with your project's config object
+	var config = {
+		apiKey: "AIzaSyChDcCpz7oeivzeiTRLmPTH7iAOVY-RaSE",
+		authDomain: "webcharts-dev.firebaseapp.com",
+		databaseURL: "https://webcharts-dev.firebaseio.com",
+		storageBucket: "webcharts-dev.appspot.com",
+		messagingSenderId: "559862339530"
+	};
 
-  // TODO: Replace this with the path to your ElasticSearch queue
-  // TODO: This is monitored by your app.js node script on the server
-  // TODO: And this should match your seed/security_rules.json
-  var PATH = "search";
-  /**====== /SET ME =====**/
-  /**====== /SET ME =====**/
-  /**====== /SET ME =====**/
+	// TODO: Replace this with the path to your ElasticSearch queue
+	// TODO: This is monitored by your app.js node script on the server
+	// TODO: And this should match your seed/security_rules.json
+	var PATH = "search";
+	/**====== /SET ME =====**/
+	/**====== /SET ME =====**/
+	/**====== /SET ME =====**/
 
-  // Initialize connection using our project credentials
-  firebase.initializeApp(config);
+	// Initialize connection using our project credentials
+	firebase.initializeApp(config);
 
-  // Get a reference to the database service
-  var database = firebase.database();
+	// Get a reference to the database service
+	var database = firebase.database();
 
-  // handle form submits
-  $('form').on('submit', function(e) {
-    e.preventDefault();
-    var $form = $(this);
-    var term = $form.find('[name="term"]').val();
-    var words = $form.find('[name="words"]').is(':checked');
-    if( term ) {
-      doSearch($form.find('[name="index"]').val(), $form.find('[name="type"]:checked').val(), makeTerm(term, words));
-    }
-    else {
-      $('#results').text('');
-    }
-  });
+	// handle form submits
+	$('form')
+		.on('submit', function (e) {
+			e.preventDefault();
+			var $form = $(this);
+			var term = $form.find('[name="term"]')
+				.val();
+			var words = $form.find('[name="words"]')
+				.is(':checked');
+			if (term) {
+				doSearch($form.find('[name="index"]')
+					.val(), $form.find('[name="type"]:checked')
+					.val(), makeTerm(term, words));
+			} else {
+				$('#results')
+					.text('');
+			}
+		});
 
-  // display search results
-  function doSearch(index, type, query) {
-    var ref = database.ref().child(PATH);
-    var key = ref.child('request').push({ index: index, type: type, query: query }).key;
+	// display search results
+	function doSearch(index, type, query) {
+		var ref = database.ref()
+			.child(PATH);
+		var key = ref.child('request')
+			.push({
+				index: index,
+				type: type,
+				query: query
+			})
+			.key;
 
-    console.log('search', key, { index: index, type: type, query: query });
-    ref.child('response/'+key).on('value', showResults);
-  }
+		console.log('search', key, {
+			index: index,
+			type: type,
+			query: query
+		});
+		ref.child('response/' + key)
+			.on('value', showResults);
+	}
 
-  function showResults(snap) {
-    if( !snap.exists() ) { return; } // wait until we get data
-    var dat = snap.val();
-    snap.ref.off('value', showResults);
-    snap.ref.remove();
-    var $pair = $('#results')
-      .text(JSON.stringify(dat, null, 2))
-      .add( $('#total').text(dat.total) )
-      .removeClass('error zero');
-    if( dat.error ) {
-      $pair.addClass('error');
-    }
-    else if( dat.total < 1 ) {
-      $pair.addClass('zero');
-    }
-  }
+	function showResults(snap) {
+		if (!snap.exists()) {
+			return;
+		} // wait until we get data
+		var dat = snap.val();
+		snap.ref.off('value', showResults);
+		snap.ref.remove();
+		var $pair = $('#results')
+			.text(JSON.stringify(dat, null, 2))
+			.add($('#total')
+				.text(dat.total))
+			.removeClass('error zero');
+		if (dat.error) {
+			$pair.addClass('error');
+		} else if (dat.total < 1) {
+			$pair.addClass('zero');
+		}
+	}
 
-  function makeTerm(term, matchWholeWords) {
-    if( !matchWholeWords ) {
-      if( !term.match(/^\*/) ) { term = '*'+term; }
-      if( !term.match(/\*$/) ) { term += '*'; }
-    }
-    return term;
-  }
+	function makeTerm(term, matchWholeWords) {
+		if (!matchWholeWords) {
+			if (!term.match(/^\*/)) {
+				term = '*' + term;
+			}
+			if (!term.match(/\*$/)) {
+				term += '*';
+			}
+		}
+		return term;
+	}
 
-  // display raw data for reference
-  database.ref().on('value', setRawData);
-  function setRawData(snap) {
-    $('#raw').text(JSON.stringify(snap.val(), null, 2));
-  }
+	// display raw data for reference
+	database.ref()
+		.on('value', setRawData);
+
+	function setRawData(snap) {
+		$('#raw')
+			.text(JSON.stringify(snap.val(), null, 2));
+	}
 })(jQuery);
