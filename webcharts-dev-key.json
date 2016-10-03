@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "webcharts-dev",
+  "private_key_id": "b9685d172d33420cf5bffdcb6d2d4d9f74c5cae8",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC+QJxO9G+phW3u\nEae/uYe6nhPOz1Ggj88kUFGRPqxoUw1hKGgGc8+BUkW6dZ6pN0dC4ZEcKy6Cn+OY\nCkHlgXos9Ws0NmKkYprc7vYU2dBrX4qsdnZjYa+JEBNdY+H+XmM9DoSdaWLZkdxM\nagS5enGdvsIHMi79NWIrvcjfXSz7tl64zX+Tvu9hvqW7pj2sIUb0SGGWZ8VyUDfZ\nsoHZ9bRTr+0vIjMn9FfLyysZtVwqzxonWYkqj4iDLoSX5D+nH0V2i+bULsA8UFcD\nCIKdQpBHjJXvUYb8+dzxEnAqphYkV+H4Keqed/JuwU8zAJ4+VP7zLr78tXXwfEf2\nDw7Gl/OzAgMBAAECggEAYY312JKEc1OE4+9PqgLzcyC9nW03OPKkz8UTnjuZ4kC7\n+pbiiHR38aMDODI5siEzPDs30k7eIYLlDEAuPAXhZQ5O803z1MDvEdzCeDycH4K1\nM+vmlt0vSkPg+iFOb8Vsc5FvNNwmINQnN1Ohqo37llyLV29HIvVtqmo9hzNa7pJZ\nX8dk2u3MqwRsi7sai8Qb+z2yY7Z80ktsxI3vgUXH21ecicJMdswpPrmmbEmGS6LB\nB3v+CR4LDRYVYF9j70u1Js4EqYNfAe5m7c+nxp+rNOchL2Ue7REBYdSZH02Dhdsa\nsMBvBtFlEZBmG1njKOvGIw244VrgkXKTBSCXVy73UQKBgQDpVS81GzZvfeYAK4Nw\nnVxlBDDGuaj3xDYdLAWCAutKxbiGAlSKC3y5HE4zCkyFH8aO6/uU4PsVtF2V4SVt\nmauskam1UWNIuAYqcG9eyInnfjHzkxYr8drmXcZ07WKy0p06n0k1idY/7Z8z4cE/\nNkmIEVuKPveBamxfMcPhsWIqKQKBgQDQvAyAhmxcsGTpPUlDAcCv4LyoT/mObC6q\nG9Fd6XtBaD8edY5BRz6lKV4y+FHtspLjQ0BazQTNxbwMWgePx3IV4ok0elS+zYpd\nHMR5S1BJnoQVJo+y4GZ0Mi8Mhm2vF4IcAFtN2x7r4gOpENiCn6/+4tTnwvZOMwSn\nbiFhczpiewKBgBRWKFcomAX/oxxArqQSEwt64gVwCRoPL+g6/f/m4TsTIJINgfDG\nL4iyvt4T97dinZu3VaYUNc4eekml5e03h47y4ye6gDzGTUNFqW9JazuR9CiWmUgb\nPEj3w2RNjFypnqqNV4QjD1ljDI0pD/7CbIY/fQr/kfLlo6xoWfpBy5yBAoGAU8ZV\ngjPxQ9Yr+gx13eXTLwOU1Dyc3VN/+xgFFJsDtAGh65ikyoBMnT8YJn7RawQTvhCc\nwJSuS+QDkDWF+WfD2xK7nItIfffCg5JrLH9Urudm/ZIndFRp6lLF3VIKrY5S0ug1\nvO6n32Yrr+wp6Wsr2LGzX305G7OQN56U2SbFFQcCgYEAhwwzCvPt3uX2CKY5UT93\nczVXfWNf55EEG0sPwy9YAaDsYiWHznn2E3rX5On+KNPz3djXVEb1fBCkrxPxdDO0\nkWRZ1tgumMQdnHs7pYNvS/0pKitTm2xqiXkLlEzsWOMEMt8UTkWILP04PQJQcHJ7\nrtIG5LL/XuOhJKF8To2a35Q=\n-----END PRIVATE KEY-----\n",
+  "client_email": "data-woker@webcharts-dev.iam.gserviceaccount.com",
+  "client_id": "116718102844599452896",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/data-woker%40webcharts-dev.iam.gserviceaccount.com"
+}
