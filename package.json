@@ -22,7 +22,8 @@
     "elastic.js": "^1.2.0",
     "elasticsearch": "^10.0.1",
     "firebase": "^3.2.0",
-    "lock": "^0.1.3"
+    "lock": "^0.1.3",
+    "nested-property": "0.0.7"
   },
   "scripts": {
     "start": "node app.js"
