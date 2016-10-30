@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "sat2-prod",
+  "private_key_id": "827018bef8b8c53825d7eab215269db2eba6c27c",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC+zTV1S4dBnpvk\n3jn60nkL4RF/AUws7y3bpaieBqjtkpI/qq+dxDQc0dv7fCq32AxrVTSiRBl+XQtg\nsu+h5HdrCK7+k/15i0vPc6DUp3IL93jfy9YwpRo2Oqz+o2mT6SLRpXtljzlHWTIa\naq96QFY7utM9iFM0fAlx6UVQ/2iCjw2xy3kAk8Lrt+MrYhVlolFMxoJmtJlv4jgq\n75eWagpdC2FJa7tX5hPAO1XeHNyoD4sN8kWLbZN1VFHqg5w+AGoXdSFtr08bfD8U\n6Sys+jtJ7LVBr/Wz/FAVz/HA6ZUjjZEwxnnXEw5ScOZrP2919VcT9YRvL3cq1wKY\nRRDl3YHRAgMBAAECggEABWISxQlpen94FH/0kNAJXD1wWe32cToaSB0nYbX8ZB+D\ngspVBBV6Buog07qQFfnBd/HCd2WGdps3a/YAbsfcWqe3EDWqrBgy/lpbykQjIpVL\n0ryUgXDXCXqkUNbZbrPgKJwLnDTrP8kTcc1awA86n5rIxO6osk1hktYq/3sFPtGv\n7MnHdVOqDAED7W8Rqe8njCv0gw2JkxVB2YPPeyUD8vRRoRtBMM7j4358h+FLsnld\nt9tvZPyfma5+Z0yFezB8SQ4eptlLoUonaxKicZiWCUvh5F/8GRSGKDPdGuy058qu\nl7zGjfGfDYlkqAEuJpLztOAIVObFVfwd5ja9XdZJQQKBgQDmmtv5BpA54YFvAaqy\nkeFKYeAckk1S709WZeaCf9esFWRf5WFy2l+b/ASfUlYO+Vh016Tw0WCcQmxEN3bx\nMo8Wd0v0egW9KRDY/Td7SmFN7v2kQwCqSLQcj9FH0J/9oQuLgo/1vpNLuiiU1K42\nQYbGj9/q7yPL15SyG9fMDiX7uQKBgQDT0DoXkXb0HDP4mbm56e6C7S8hJ+JGAEA8\nEp3IHUmHZ5kUTMvMtFdvi2VeTPFd+4xHMZLMtRBYfT4o3W0zUpy8OK4hml4L+094\nwJmH0TelPMMmjtTjboTPmRk0SF6pBjvpYMRAblDTL/cojQlhHQTix/ZrRBTGOA89\nv8PcOwky2QKBgQDJtLKsA52rwx/f5OlWAFu7IBlTZHTWEhSnUcJqa0BOePevGYg/\nWds/KRUx9mbn+hnxOZ5ANiP3CfKBSLJ1DvAxim+ZjBHw/zaJVhNteAXckSqyvxiZ\n2bYRNYqs8kK/Klpa0Pzyyps0JcTRSaaINpCYpcgKStpYtlyN3eTHy6hVoQKBgCok\nQJqVz3Pr9I8ejqwlldWouPrAw60nuZ/6GDhLU2jEPNmkGdwleUvxEP79Efyf4p37\nh/iAgbsJWAerXmGaqyJrqIF5BAMgQgSFVUaHYqnWeAFA46xIPdZL4I7dYy//1IWv\nQfyLtjr+TQ9dWCNhMaqpHCblSbjSSH4BnEdB26epAoGBAI239zdifCa0WleZD155\nyQ10LoHaI0jqmpP7b9FgIdyzzEULV62TqwcwcT/b595MkOmBRcAHjcjG0eS0qFFs\nHyhEsojg9l5jUcwDh5cc2KW7HKsaLx+PdcxX88UfYjk3R5Samy1/vf6KN4cdcbWC\nWz4Zg4G41UM+nDgjKMCA2z6m\n-----END PRIVATE KEY-----\n",
+  "client_email": "znk-flashlight@sat2-prod.iam.gserviceaccount.com",
+  "client_id": "117147208351015622506",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/znk-flashlight%40sat2-prod.iam.gserviceaccount.com"
+}

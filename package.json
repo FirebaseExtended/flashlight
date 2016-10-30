@@ -11,7 +11,11 @@
     "node": "0.10.x"
   },
   "main": "app.js",
-  "devDependencies": {},
+  "devDependencies": {
+    "lock": "^0.1.3",
+    "nested-property": "0.0.7",
+    "node-mutex": "^0.2.2"
+  },
   "dependencies": {
     "JQDeferred": "~1.9.1",
     "colors": "~0.6.2",

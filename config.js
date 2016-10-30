@@ -10,7 +10,7 @@
  ***************************************************/
 
 // Your Firebase instance where we will listen and write search results
-exports.FB_URL   = 'https://radiant-fire-8049.firebaseio.com/';
+exports.FB_URL   = 'https://sat2-prod.firebaseio.com/';
 
 // The path in your Firebase where clients will write search requests
 exports.FB_REQ   = process.env.FB_REQ || 'search/request';
@@ -20,7 +20,7 @@ exports.FB_RES   = process.env.FB_RES || 'search/response';
 
 // See https://firebase.google.com/docs/server/setup. for how to
 // auto-generate this config json ...
-exports.FB_SERVICEACCOUNT = 'sss.json';
+exports.FB_SERVICEACCOUNT = 'sat2-prod-827018bef8b8.json';
 
 /** ElasticSearch Settings
  *********************************************/
@@ -30,16 +30,18 @@ if( process.env.BONSAI_URL ) {
 }
 else {
    // ElasticSearch server's host URL
-   exports.ES_HOST  = process.env.ES_HOST || 'banyan-9927252.us-east-1.bonsai.io';
+   // exports.ES_HOST  = process.env.ES_HOST || 'banyan-9927252.us-east-1.bonsai.io';
+   exports.ES_HOST  = process.env.ES_HOST || 'znk-dev-6994146845.us-east-1.bonsai.io';
+   // https://4ycuwepq0x:ppu4kc3yfl@znk-dev-6994146845.us-east-1.bonsai.io
 
    // ElasticSearch server's host port
    exports.ES_PORT  = process.env.ES_PORT || '9200';
 
    // ElasticSearch username for http auth
-   exports.ES_USER  = process.env.ES_USER || '8rwmj75xga';
+   exports.ES_USER  = process.env.ES_USER || '4ycuwepq0x';
 
    // ElasticSearch password for http auth
-   exports.ES_PASS  = process.env.ES_PASS || 'vjoo6fwk9x';
+   exports.ES_PASS  = process.env.ES_PASS || 'ppu4kc3yfl';
 }
 
 
@@ -63,9 +65,9 @@ else {
 exports.paths = [
    {
       path:  "users",
-      index: "firebase",
-      type:  "user"
-      // fields: ["profile.email","profile.nickname"]
+      index: "userprofile",
+      type:  "user",
+      fields: ["profile.email","profile.nickname"]
    }
    // {
    //    path:  "invitations",

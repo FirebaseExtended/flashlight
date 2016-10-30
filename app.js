@@ -25,4 +25,5 @@ console.log('Connected to ElasticSearch host %s:%s'.grey, conf.ES_HOST, conf.ES_
 
 fbutil.init(conf.FB_URL, conf.FB_SERVICEACCOUNT);
 PathMonitor.process(esc, conf.paths, conf.FB_PATH);
+console.log('conf.CLEANUP_INTERVAL='+ conf.CLEANUP_INTERVAL);
 SearchQueue.init(esc, conf.FB_REQ, conf.FB_RES, conf.CLEANUP_INTERVAL);

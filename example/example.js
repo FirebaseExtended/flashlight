@@ -6,11 +6,19 @@
   /**====== SET ME =====**/
   // Set the configuration for your app
   // TODO: Replace with your project's config object
+  // var config = {
+  //   apiKey: "AIzaSyCBMUNoMXdejqSaRGyxJT2Lkoj4QOrWmAQ",
+  //   authDomain: "radiant-fire-8049.firebaseapp.com",
+  //   databaseURL: "https://radiant-fire-8049.firebaseio.com",
+  //   storageBucket: "radiant-fire-8049.appspot.com",
+  // };
+
   var config = {
-    apiKey: "AIzaSyCBMUNoMXdejqSaRGyxJT2Lkoj4QOrWmAQ",
-    authDomain: "radiant-fire-8049.firebaseapp.com",
-    databaseURL: "https://radiant-fire-8049.firebaseio.com",
-    storageBucket: "radiant-fire-8049.appspot.com",
+    apiKey: "AIzaSyCvQvYrIkOOH6SOrIETtUyeuDgEIopohjE",
+    authDomain: "sat2-prod.firebaseapp.com",
+    databaseURL: "https://sat2-prod.firebaseio.com",
+    storageBucket: "sat2-prod.appspot.com",
+    messagingSenderId: "146492734678"
   };
 
   // TODO: Replace this with the path to your ElasticSearch queue
