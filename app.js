@@ -3,7 +3,7 @@
 /*
  * @version 0.3, 3 June 2014
  */
-
+require('./env.js');
 var elasticsearch = require('elasticsearch'),
   conf = require('./config'),
   fbutil = require('./lib/fbutil'),
