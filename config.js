@@ -64,7 +64,6 @@ exports.paths = [
     index: "places",
     type: "organization",
     parser: function (data) {
-      console.log('got data! ', data.details)
       return data.details;
     }
   },
