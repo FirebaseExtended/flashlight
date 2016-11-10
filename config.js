@@ -81,19 +81,31 @@ exports.paths = [
    parser: function(data){
     if ( !data.details ) return {} ;
     if ( !data.details.contents ) return {};
-    console.log('sync:', data);
-    cipher.decryptPayload(data.id, data.details.contents);
+    var contents = cipher.decryptPayload(data.details.id, data.details.contents);
+    strip$(contents,'');
+    data.details.contents = contents;
     return data.details;
    }
  }
-  // {
-  //     path  : "messages",
-  //     index : "firebase",
-  //     type  : "message",
-  //     fields: ['msg', 'name'],
-  //     filter: function(data) { return data.name !== 'system'; }
-  //  }
 ];
+
+function strip$(obj, stack) {
+  for (var property in obj) {
+    if ( obj[property] === null ){ 
+      delete obj[property];  
+    } else if (obj[property] && typeof obj[property] == "object") {
+        strip$(obj[property], stack + '.' + property);
+    } else {
+        console.log(property + "   " + obj[property]);
+        if ( property.startsWith('$')){ 
+          console.log('deleted', property);
+          delete obj[property];
+        }
+    } 
+  }
+}
+
+
 
 // Paths can also be stored in Firebase and loaded using FB_PATHS!
 exports.FB_PATH = process.env.FB_PATHS || null;
