@@ -8,7 +8,7 @@
 
 /** Firebase Settings
  ***************************************************/
-
+var cipher = require('./lib/services/cipher-service.js');
 // Your Firebase instance where we will listen and write search results
 exports.FB_URL = 'https://' + process.env.FB_NAME + '.firebaseio.com';
 
@@ -59,19 +59,33 @@ else {
  * location you specified in the FB_PATHS variable. Be sure to restrict that data in your Security Rules.
  ****************************************************/
 exports.paths = [
+  // {
+  //   path: "organizations",
+  //   index: "places",
+  //   type: "organization",
+  //   parser: function (data) {
+  //     return data.details;
+  //   }
+  // },
+  // {
+  //   path: "patients",
+  //   index: "people",
+  //   type: "patient"
+  // }
+  //,
   {
-    path: "organizations",
-    index: "places",
-    type: "organization",
-    parser: function (data) {
-      return data.details;
-    }
-  },
-  {
-    path: "patients",
-    index: "people",
-    type: "patient"
-  }
+   path: "orgInbox",
+   index: "inbox",
+   type: "item",
+   // fields: ['details'],
+   parser: function(data){
+    if ( !data.details ) return {} ;
+    if ( !data.details.contents ) return {};
+    console.log('sync:', data);
+    cipher.decryptPayload(data.id, data.details.contents);
+    return data.details;
+   }
+ }
   // {
   //     path  : "messages",
   //     index : "firebase",
