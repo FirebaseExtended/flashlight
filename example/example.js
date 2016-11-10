@@ -7,7 +7,7 @@
   // Set the configuration for your app
   // TODO: Replace with your project's config object
   var config = {
-    databaseURL: "https://flashlight.firebaseio.com"
+    databaseURL: process.env.FB_URL
   };
 
   // TODO: Replace this with the path to your ElasticSearch queue
