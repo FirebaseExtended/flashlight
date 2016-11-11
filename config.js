@@ -129,8 +129,8 @@ exports.paths = [
   // }
   {
    path: "orgInbox",
-   index: "inbox",
-   type: "item",
+   index: "referrals",
+   type: "referral",
    // fields: ['details'],
    parser: function(data){
     if ( !data.details ) return {} ;
