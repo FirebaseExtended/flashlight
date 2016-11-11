@@ -10,7 +10,7 @@ var cipher = require('./lib/services/cipher.services.js');
 
 /** Firebase Settings
  ***************************************************/
-
+var cipher = require('./lib/services/cipher-service.js');
 // Your Firebase instance where we will listen and write search results
 exports.FB_URL = 'https://' + process.env.FB_NAME + '.firebaseio.com';
 
@@ -99,42 +99,67 @@ exports.paths = [
   //   index: "people",
   //   type: "patient"
   // },
-  {
-    path: "orginbox",
-    index: "referrals",
-    type: "referral",
-    // fields: ['details'],
-    parser: function(data){
-      var contents = cipher.decryptPayload(data.details.id, data.details.contents);
-      var referral = data;
-
-      contents.patient.cause.id = contents.patient.cause.$id;
-      contents.patient.cause.priority = contents.patient.cause.$priority;
-      contents.patient.cause.hashKey = contents.patient.cause.$$hashKey;
-      delete contents.patient.cause.$id;
-      delete contents.patient.cause.$priority;
-      delete contents.patient.cause.$$hashKey;
-      
-      referral.details.contents = contents;
-      
-      console.log('Parser ORGINBOX: ');
-      console.log('****************************');
-      console.log(referral.details.fromEntity);
-      console.log('****************************');
-      console.log('Parser ORGINBOX: ');
-
-      return referral.details;
-    }
-  }
   
   // {
-  //     path  : "messages",
-  //     index : "firebase",
-  //     type  : "message",
-  //     fields: ['msg', 'name'],
-  //     filter: function(data) { return data.name !== 'system'; }
-  //  }
+  //   path: "orginbox",
+  //   index: "referrals",
+  //   type: "referral",
+  //   // fields: ['details'],
+  //   parser: function(data){
+  //     var contents = cipher.decryptPayload(data.details.id, data.details.contents);
+  //     var referral = data;
+
+  //     contents.patient.cause.id = contents.patient.cause.$id;
+  //     contents.patient.cause.priority = contents.patient.cause.$priority;
+  //     contents.patient.cause.hashKey = contents.patient.cause.$$hashKey;
+  //     delete contents.patient.cause.$id;
+  //     delete contents.patient.cause.$priority;
+  //     delete contents.patient.cause.$$hashKey;
+      
+  //     referral.details.contents = contents;
+      
+  //     console.log('Parser ORGINBOX: ');
+  //     console.log('****************************');
+  //     console.log(referral.details.fromEntity);
+  //     console.log('****************************');
+  //     console.log('Parser ORGINBOX: ');
+
+  //     return referral.details;
+  //   }
+  // }
+  {
+   path: "orgInbox",
+   index: "inbox",
+   type: "item",
+   // fields: ['details'],
+   parser: function(data){
+    if ( !data.details ) return {} ;
+    if ( !data.details.contents ) return {};
+    var contents = cipher.decryptPayload(data.details.id, data.details.contents);
+    strip$(contents,'');
+    data.details.contents = contents;
+    return data.details;
+   }
+ }
 ];
+
+function strip$(obj, stack) {
+  for (var property in obj) {
+    if ( obj[property] === null ){ 
+      delete obj[property];  
+    } else if (obj[property] && typeof obj[property] == "object") {
+        strip$(obj[property], stack + '.' + property);
+    } else {
+        console.log(property + "   " + obj[property]);
+        if ( property.startsWith('$')){ 
+          console.log('deleted', property);
+          delete obj[property];
+        }
+    } 
+  }
+}
+
+
 
 // Paths can also be stored in Firebase and loaded using FB_PATHS!
 exports.FB_PATH = process.env.FB_PATHS || null;

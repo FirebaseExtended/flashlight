@@ -4,6 +4,18 @@
  * @version 0.3, 3 June 2014
  */
 require('./env.js');
+
+function onGlobalError(details){ 
+  if ( details ) {
+    console.error('Global Error:', details);
+    console.error('STACK', details.stack);
+  }
+  process.exit(1);
+}
+
+process.on('SIGINT', onGlobalError);
+process.on('uncaughtException',onGlobalError);
+
 var elasticsearch = require('elasticsearch'),
   conf = require('./config'),
   fbutil = require('./lib/fbutil'),
