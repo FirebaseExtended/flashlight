@@ -16,8 +16,13 @@
   "devDependencies": {},
   "dependencies": {
     "JQDeferred": "~1.9.1",
+    "bunyan": "^1.8.4",
+    "bunyan-sentry": "^1.0.0",
     "colors": "~0.6.2",
     "elasticsearch": "^11.0.1",
-    "firebase": "^3.5.2"
+    "firebase": "^3.5.2",
+    "node-forge": "^0.6.21",
+    "raven": "^0.12.1",
+    "rsvp": "^3.3.3"
   }
 }

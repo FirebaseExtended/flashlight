@@ -1,4 +1,6 @@
 .DS_Store/
-/.idea
 /node_modules
+/.idea
 service-account.json
+env.js
+gcp.js
