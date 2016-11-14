@@ -7,7 +7,7 @@
  */
 
 // var cipher = require('./lib/services/cipher-service.js');
-var cipher = require('./lib/services/cipher.service.js');
+var cipher = require('./lib/services/cipher.services.js');
 /** Firebase Settings
  ***************************************************/
 // Your Firebase instance where we will listen and write search results
