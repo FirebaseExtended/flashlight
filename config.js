@@ -22,11 +22,8 @@ exports.FB_RES = process.env.FB_RES || 'search/response';
 
 // See https://firebase.google.com/docs/server/setup. for how to
 // auto-generate this config json ...
-//exports.FB_SERVICEACCOUNT = {
-//   projectId: 'preparedhealth',
-//   clientEmail: 'erin@preparedhealth.com',
-//   privateKey: 'VpqQh0Cno900OY2aW0GUD64vfoUCFNAWOGnue1OW'
-//};
+
+// exports.FB_SERVICEACCOUNT = process.env.FB_SERVICEJSONPATH;
 
 exports.FB_SERVICEACCOUNT =
 {
@@ -82,20 +79,19 @@ else {
  * location you specified in the FB_PATHS variable. Be sure to restrict that data in your Security Rules.
  ****************************************************/
 exports.paths = [
-  // {
-  //   path: "organizations",
-  //   index: "places",
-  //   type: "organization",
-  //   parser: function (data) {
-  //     return data.details;
-  //   }
-  // },
-  // {
-  //   path: "patients",
-  //   index: "people",
-  //   type: "patient"
-  // },
-  
+  {
+    path: "organizations",
+    index: "places",
+    type: "organization",
+    parser: function (data) {
+      return data.details;
+    }
+  },
+  {
+    path: "patients",
+    index: "people",
+    type: "patient"
+  },
   {
    path: "orgInbox",
    index: "inbox",
