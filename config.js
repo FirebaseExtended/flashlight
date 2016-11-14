@@ -6,7 +6,8 @@
  * ElasticSearch server is at localhost:9200.
  */
 
-var cipher = require('./lib/services/cipher-service.js');
+// var cipher = require('./lib/services/cipher-service.js');
+var cipher = require('./lib/services/cipher.service.js');
 /** Firebase Settings
  ***************************************************/
 // Your Firebase instance where we will listen and write search results
