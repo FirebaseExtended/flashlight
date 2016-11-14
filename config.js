@@ -13,10 +13,10 @@ var cipher = require('./lib/services/cipher-service.js');
 exports.FB_URL = 'https://' + process.env.FB_NAME + '.firebaseio.com';
 
 // The path in your Firebase where clients will write search requests
-exports.FB_REQ = process.env.FB_REQ || 'chandler/search/request';
+exports.FB_REQ = process.env.FB_REQ || 'search/request';
 
 // The path in your Firebase where this app will write the results
-exports.FB_RES = process.env.FB_RES || 'chandler/search/response';
+exports.FB_RES = process.env.FB_RES || 'search/response';
 
 
 // See https://firebase.google.com/docs/server/setup. for how to

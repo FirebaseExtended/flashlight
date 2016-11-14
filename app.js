@@ -22,11 +22,6 @@ var elasticsearch = require('elasticsearch'),
   PathMonitor = require('./lib/PathMonitor'),
   SearchQueue = require('./lib/SearchQueue');
 
-
-console.log('CONF');
-console.log(conf);
-console.log('CONF');
-
 var escOptions = {
   hosts: [{
     host: conf.ES_HOST,
@@ -56,9 +51,6 @@ var timeoutObj = setInterval(function() {
 }, 5000);
 
 function initFlashlight() {
-  console.log('FB_URL: ', conf.FB_URL);
-  console.log('FB_REQ: ', conf.FB_REQ);
-  console.log('FB_RES: ', conf.FB_RES);
   fbutil.init(conf.FB_URL, conf.FB_SERVICEACCOUNT);
   PathMonitor.process(esc, conf.paths, conf.FB_PATH);
   SearchQueue.init(esc, conf.FB_REQ, conf.FB_RES, conf.CLEANUP_INTERVAL);
