@@ -6,22 +6,17 @@
  * ElasticSearch server is at localhost:9200.
  */
 
-var cipher = require('./lib/services/cipher.services.js');
-
+var cipher = require('./lib/services/cipher-service.js');
 /** Firebase Settings
  ***************************************************/
-var cipher = require('./lib/services/cipher-service.js');
 // Your Firebase instance where we will listen and write search results
 exports.FB_URL = 'https://' + process.env.FB_NAME + '.firebaseio.com';
 
 // The path in your Firebase where clients will write search requests
 exports.FB_REQ = process.env.FB_REQ || 'chandler/search/request';
-console.log('FB_REQ: ', exports.FB_REQ);
 
 // The path in your Firebase where this app will write the results
 exports.FB_RES = process.env.FB_RES || 'chandler/search/response';
-console.log('*********************************');
-console.log('FB_RES: ', exports.FB_RES);
 
 
 // See https://firebase.google.com/docs/server/setup. for how to
@@ -100,38 +95,10 @@ exports.paths = [
   //   type: "patient"
   // },
   
-  // {
-  //   path: "orginbox",
-  //   index: "referrals",
-  //   type: "referral",
-  //   // fields: ['details'],
-  //   parser: function(data){
-  //     var contents = cipher.decryptPayload(data.details.id, data.details.contents);
-  //     var referral = data;
-
-  //     contents.patient.cause.id = contents.patient.cause.$id;
-  //     contents.patient.cause.priority = contents.patient.cause.$priority;
-  //     contents.patient.cause.hashKey = contents.patient.cause.$$hashKey;
-  //     delete contents.patient.cause.$id;
-  //     delete contents.patient.cause.$priority;
-  //     delete contents.patient.cause.$$hashKey;
-      
-  //     referral.details.contents = contents;
-      
-  //     console.log('Parser ORGINBOX: ');
-  //     console.log('****************************');
-  //     console.log(referral.details.fromEntity);
-  //     console.log('****************************');
-  //     console.log('Parser ORGINBOX: ');
-
-  //     return referral.details;
-  //   }
-  // }
   {
    path: "orgInbox",
-   index: "referrals",
-   type: "referral",
-   // fields: ['details'],
+   index: "inbox",
+   type: "item",
    parser: function(data){
     if ( !data.details ) return {} ;
     if ( !data.details.contents ) return {};
