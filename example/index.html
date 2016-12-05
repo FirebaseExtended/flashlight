@@ -34,16 +34,21 @@
                <!-- turn this into a select to search multiple indexes -->
                <input type="hidden" name="index" value="firebase" />
                <div class="input-group">
-                   <input type="text" class="form-control" name="term" placeholder="Enter search term">
+                   <input type="text" class="form-control" name="term" value="you" placeholder="Enter search term">
                    <span class="input-group-btn">
                        <button class="btn btn-default" type="submit">Search!</button>
                    </span>
                </div>
                <ul class="list-inline">
-                   <li><label><input type="radio" name="type" value="user" checked> users</label></li>
-                   <li><label><input type="radio" name="type" value="message"> messages</label></li>
+                   <li><label><input type="radio" name="type" value="user"> users</label></li>
+                   <li><label><input type="radio" name="type" value="message" checked> messages</label></li>
                    <li class="divider"></li>
-                   <li><label><input type="checkbox" name="words"> whole words</label></li>
+                   <li><label><input type="checkbox" name="exact"> match whole phrase</label></li>
+               </ul>
+               <ul class="list-inline paginate-fields">
+                   <li>Pagination: </li>
+                   <li><label>size <input type="number" name="size" /></label></li>
+                   <li><label>from <input type="number" name="from" /></label></li>
                </ul>
                <p class="help-block">You may use * or ? for wild cards in your search.</p>
            </form>
@@ -53,6 +58,8 @@
         <div class="col-md-6">
            <h2>Results <span id="total" class="zero">0</span></h2>
            <pre id="results" class="pre-scrollable zero">(enter a search term)</pre>
+           <h2>The query used</h2>
+           <pre id="query" class="pre-scrollable"></pre>
         </div>
         <div class="col-md-6">
            <h2>Raw data</h2>
@@ -67,7 +74,7 @@
 <a id="fork_on_github" href="https://github.com/firebase/flashlight" target="_blank"><img src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png" alt="Fork me on GitHub"></a>
 
 <!-- libs and dependencies -->
-<script src="https://www.gstatic.com/firebasejs/3.2.0/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.6.2/firebase.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
 <script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 

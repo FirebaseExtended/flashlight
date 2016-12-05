@@ -1,16 +1,15 @@
 {
    "rules": {
-
-      ".read": false,
-      ".write": false,
-      "search": {
+     ".read": false,
+     ".write": false,
+     "search": {
          "request": {
             "$recid": {
                // I can only read records assigned to me
                ".read": "auth.id === data.child('id').val() || auth.uid === data.child('id').val()",
                // I can only write new records that don't exist yet
                ".write": "!data.exists() && (newData.child('id').val() === auth.id || newData.child('id').val() === auth.uid)",
-               ".validate": "newData.hasChildren(['query', 'index', 'type'])",
+               ".validate": "newData.hasChildren(['index', 'type']) && (newData.hasChild('q') || newData.hasChild('query') || newData.hasChild('body'))",
                "index": {
                   // accepts arrays or strings
                   ".validate": "(newData.isString() && newData.val().length < 1000) || newData.hasChildren()",
@@ -26,8 +25,25 @@
                   }
                },
                "query": {
-                  // structure of the query object is pretty open-ended
+                  // lucene formatted string, such as "title:search_term" or a `body` attribute
+                  // see https://www.elastic.co/guide/en/elasticsearch/guide/current/query-dsl-intro.html
                   ".validate": "newData.isString() || newData.hasChildren()"
+               },
+               "body": {
+                  // The `body` object of an ES search, such as { size: 25, from: 0, query: "*foo*" }, see
+                  // https://www.elastic.co/guide/en/elasticsearch/guide/current/query-dsl-intro.html
+                  ".validate": "newData.hasChildren()"
+               },
+               "q": {
+                  // lucene formatted 'lite' search string, such as "*foo*" or "+name:(mary john) +date:>2014-09-10", see
+                  // https://www.elastic.co/guide/en/elasticsearch/guide/current/search-lite.html
+                  ".validate": "newData.isString()"
+               },
+               "size": {
+                  ".validate": "newData.isNumber() && newData.val() >= 0"
+               },
+               "from": {
+                 ".validate": "newData.isNumber() && newData.val() >= 0"
                },
                "$other": {
                   ".validate": false
@@ -35,13 +51,12 @@
             }
          },
          "response": {
+           ".indexOn": "timestamp",
             "$recid": {
-               // I can only read/write records assigned to me
-               ".read": "auth.id === data.child('id').val() || auth.uid === data.child('id').val()",
-               ".write": "auth.id === data.child('id').val() || auth.uid === data.child('id').val()",
-               // Assumes that Flashlight will be writing the records using a secret or a token that has admin: true
-               // The only thing a logged in user needs to do is delete results after reading them
-               ".validate": false
+              // I can only read/write records assigned to me
+              ".read": "auth.uid === data.child('id').val()",
+              // delete only
+              ".write": "auth.uid === data.child('id').val() && !newData.exists()"
             }
          }
       }

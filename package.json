@@ -1,22 +1,19 @@
 {
   "name": "Flashlight",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A search utility for Firebase",
   "homepage": "https://github.com/firebase/flashlight",
-  "author": {
-    "name": "Michael \"Kato\" Wulf",
-    "email": "katowulf@gmail.com"
-  },
-  "engines": {
-    "node": "0.10.x"
+  "scripts": {
+    "start": "node app.js",
+    "monitor": "nodemon app.js",
+    "deploy": "gcloud app deploy"
   },
   "main": "app.js",
   "devDependencies": {},
   "dependencies": {
     "JQDeferred": "~1.9.1",
     "colors": "~0.6.2",
-    "elastic.js": "^1.2.0",
-    "elasticsearch": "^10.0.1",
-    "firebase": "^3.2.0"
+    "elasticsearch": "^11.0.1",
+    "firebase": "^3.5.2"
   }
 }

@@ -37,3 +37,7 @@ h2 span.error, .error {
 @media (max-width: 767px) {
    #fork_on_github { display: none }
 }
+
+.paginate-fields [type=number] {
+   width: 4em;
+}
