@@ -190,7 +190,7 @@ Here are a couple quick optimizations you can make to improve scale:
    as simple as creating two Flashlight workers, opening `app.js` in each,
    and commenting out SearchQueue.init() or PathMonitor.process() respectively.
  * When your service restarts, all data is re-indexed. To prevent this,
-   you can use pathBuilder as described in the next section.
+   you can use refBuilder as described in the next section.
  * With a bit of work, both PathMonitor and SearchQueue could be adapted 
    to function as a Service Worker for 
    [firebase-queue](https://github.com/firebase/firebase-queue),    
@@ -199,7 +199,7 @@ Here are a couple quick optimizations you can make to improve scale:
 
 Use refBuilder to improve indexing efficiency
 ---------------------------------------------
-In `config.js`, each entry in `paths` can be assigned a `pathBuilder`
+In `config.js`, each entry in `paths` can be assigned a `refBuilder`
 function. This can construct a query for determining which records
 get indexed. 
 
@@ -218,7 +218,7 @@ exports.paths = [
       index : "firebase",
       type  : "message",
       fields: ['message_body', 'tags'],
-      pathBuilder: function(ref, path) {
+      refBuilder: function(ref, path) {
          return ref.orderByChild('timestamp').startAt(Date.now());
       }
    }
