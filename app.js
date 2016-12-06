@@ -8,6 +8,7 @@ var elasticsearch = require('elasticsearch'),
 	conf = require('./config'),
 	fbutil = require('./lib/fbutil'),
 	PathMonitor = require('./lib/PathMonitor'),
+	colors = require('colors'),
 	SearchQueue = require('./lib/SearchQueue');
 var escOptions = {
 	hosts: [{
