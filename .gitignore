@@ -2,5 +2,4 @@
 /.idea
 /node_modules
 service-account.json
-config.js
 app.yaml
