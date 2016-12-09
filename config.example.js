@@ -60,23 +60,24 @@ if (process.env.BONSAI_URL) {
  * location you specified in the FB_PATHS variable. Be sure to restrict that data in your Security Rules.
  ****************************************************/
 
-exports.paths = [{
-		path: "users",
-		index: "firebase",
-		type: "user"
-	}
-	// ,
-	// {
-	//    path:  "messages",
-	//    index: "firebase",
-	//    type:  "message",
-	//    fields: ['msg', 'name'],
-	//    filter: function(data) { return data.name !== 'system'; }
-	// }
-];
+// exports.paths = [
+// 	{
+// 		path: "users",
+// 		index: "firebase",
+// 		type: "user"
+// 	}
+// 	// ,
+// 	// {
+// 	//    path:  "messages",
+// 	//    index: "firebase",
+// 	//    type:  "message",
+// 	//    fields: ['msg', 'name'],
+// 	//    filter: function(data) { return data.name !== 'system'; }
+// 	// }
+// ];
 
 // Paths can also be stored in Firebase! See README for details.
-//exports.paths = process.env.FB_PATHS || null;
+exports.paths = process.env.FB_PATHS || null;
 
 // Additional options for ElasticSearch client
 exports.ES_OPTS = {

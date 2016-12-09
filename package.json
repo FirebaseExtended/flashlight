@@ -13,7 +13,7 @@
   "dependencies": {
     "JQDeferred": "~1.9.1",
     "colors": "~0.6.2",
-    "elasticsearch": "^11.0.1",
+    "elasticsearch": "^12.1.0",
     "firebase": "^3.5.2",
     "firebase-admin": "^4.0.3"
   }
