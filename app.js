@@ -18,6 +18,15 @@ var escOptions = {
 	}]
 };
 
+// var escOptions = {
+// 	host: [{
+// 		host: 'b89bd55096336176cdc3987a816ed489.us-east-1.aws.found.io',
+// 		auth: 'elastic:P61t3y9vgx53A7FN1HeOj7W6',
+// 		protocol: 'http',
+// 		port: 9200
+// 	}]
+// };
+
 for (var attrname in conf.ES_OPTS) {
 	if (conf.ES_OPTS.hasOwnProperty(attrname)) {
 		escOptions[attrname] = conf.ES_OPTS[attrname];

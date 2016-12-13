@@ -96,7 +96,7 @@ exports.CLEANUP_INTERVAL =
 function processBonsaiUrl(exports, url) {
 	var matches = url.match(/^https?:\/\/([^:]+):([^@]+)@([^/]+)\/?$/);
 	exports.ES_HOST = matches[3];
-	exports.ES_PORT = 80;
+	exports.ES_PORT = 9200;
 	exports.ES_USER = matches[1];
 	exports.ES_PASS = matches[2];
 	console.log('Configured using BONSAI_URL environment variable', url, exports);
