@@ -26,60 +26,65 @@
 </head>
 <body ng-app="app" class="ng-cloak" >
 
-<div class="container">
-    <h1>Flashlight: Search library built on Firebase and ElasticSearch</h1>
-    <div class="row">
-        <div class="col-md-6">
-           <form role="form" class="form-inline">
-               <!-- turn this into a select to search multiple indexes -->
-               <input type="hidden" name="index" value="firebase" />
-               <div class="input-group">
-                   <input type="text" class="form-control" name="term" value="you" placeholder="Enter search term">
-                   <span class="input-group-btn">
-                       <button class="btn btn-default" type="submit">Search!</button>
-                   </span>
-               </div>
-               <ul class="list-inline">
-                   <li><label><input type="radio" name="type" value="user"> users</label></li>
-                   <li><label><input type="radio" name="type" value="message" checked> messages</label></li>
-                   <li class="divider"></li>
-                   <li><label><input type="checkbox" name="exact"> match whole phrase</label></li>
-               </ul>
-               <ul class="list-inline paginate-fields">
-                   <li>Pagination: </li>
-                   <li><label>size <input type="number" name="size" /></label></li>
-                   <li><label>from <input type="number" name="from" /></label></li>
-               </ul>
-               <p class="help-block">You may use * or ? for wild cards in your search.</p>
-           </form>
+    <div class="container">
+        <h1>Flashlight: Search library built on Firebase and ElasticSearch</h1>
+        <div class="row">
+            <div class="col-md-6">
+                <form role="form" class="form-inline">
+                    <!-- turn this into a select to search multiple indexes -->
+                    <select name="index">
+                        <option value="firebase">firebase</option>
+                        <option value="usersConnector">usersConnector</option>
+                    </select>
+                    <!-- <input type="select" name="index" value="firebase" /> -->
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="term" value="you" placeholder="Enter search term">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="submit">Search!</button>
+                        </span>
+                    </div>
+                    <ul class="list-inline">
+                        <li><label><input type="radio" name="type" value="user"> users</label></li>
+                        <li><label><input type="radio" name="type" value="usersConnector"> usersConnector</label></li>
+                        <li><label><input type="radio" name="type" value="message" checked> messages</label></li>
+                        <li class="divider"></li>
+                        <li><label><input type="checkbox" name="exact"> match whole phrase</label></li>
+                    </ul>
+                    <ul class="list-inline paginate-fields">
+                        <li>Pagination: </li>
+                        <li><label>size <input type="number" name="size" /></label></li>
+                        <li><label>from <input type="number" name="from" /></label></li>
+                    </ul>
+                    <p class="help-block">You may use * or ? for wild cards in your search.</p>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Results <span id="total" class="zero">0</span></h2>
+                <pre id="results" class="pre-scrollable zero">(enter a search term)</pre>
+                <h2>The query used</h2>
+                <pre id="query" class="pre-scrollable"></pre>
+            </div>
+            <div class="col-md-6">
+                <h2>Raw data</h2>
+                <pre id="raw" class="pre-scrollable"></pre>
+            </div>
+        </div>
+        <div class="footer">
+            <p><a href="http://firebase.mit-license.org/">MIT License</a> | <a href="http://www.firebase.com">Firebase</a></p>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-6">
-           <h2>Results <span id="total" class="zero">0</span></h2>
-           <pre id="results" class="pre-scrollable zero">(enter a search term)</pre>
-           <h2>The query used</h2>
-           <pre id="query" class="pre-scrollable"></pre>
-        </div>
-        <div class="col-md-6">
-           <h2>Raw data</h2>
-            <pre id="raw" class="pre-scrollable"></pre>
-        </div>
-    </div>
-    <div class="footer">
-        <p><a href="http://firebase.mit-license.org/">MIT License</a> | <a href="http://www.firebase.com">Firebase</a></p>
-    </div>
-</div>
 
-<a id="fork_on_github" href="https://github.com/firebase/flashlight" target="_blank"><img src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png" alt="Fork me on GitHub"></a>
+    <a id="fork_on_github" href="https://github.com/firebase/flashlight" target="_blank"><img src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png" alt="Fork me on GitHub"></a>
 
-<!-- libs and dependencies -->
-<script src="https://www.gstatic.com/firebasejs/3.6.2/firebase.js"></script>
-<script type="text/javascript" src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
-<script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <!-- libs and dependencies -->
+    <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 
-<!-- the app -->
-<script type="text/javascript" src="example.js"></script>
+    <!-- the app -->
+    <script type="text/javascript" src="example.js"></script>
 
 </body>
 </html>

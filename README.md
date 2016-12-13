@@ -14,7 +14,7 @@ Getting Started
  - Install and run [ElasticSearch](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/setup.html) or add [Bonsai service](https://addons.heroku.com/bonsai#starter) via Heroku
  - `git clone https://github.com/firebase/flashlight`
  - `npm install`
- - edit config.js (see comments at the top, you must set FB_URL and FB_SERVICEACCOUNT at a minimum)
+ - edit config.js (see comments at the top, you must set FB_URL and FB_SERVICEJSONPATH at a minimum)
  - `node app.js` (run the app)
 
 Check out the recommended security rules in example/seed/security_rules.json.
@@ -25,7 +25,7 @@ to manually create the index referenced in each path:
 
     curl -X POST http://localhost:9200/firebase
 
-To read more about setting up a Firebase service account and configuring FB_SERVICEACCOUNT, [click here](https://firebase.google.com/docs/database/server/start).
+To read more about setting up a Firebase service account and configuring FB_SERVICEJSONPATH, [click here](https://firebase.google.com/docs/database/server/start).
 
 Client Implementations
 ======================
