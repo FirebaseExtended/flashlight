@@ -9,6 +9,9 @@
     "deploy": "gcloud app deploy"
   },
   "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
   "devDependencies": {},
   "dependencies": {
     "JQDeferred": "~1.9.1",
