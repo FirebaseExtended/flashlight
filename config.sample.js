@@ -9,13 +9,8 @@
 /** Firebase Settings
  ***************************************************/
 
-var _ = require('lodash')
-  , normalizers = require('./lib/normalizers');
-
-console.log(process.env);
-
 // Your Firebase instance where we will listen and write search results
-exports.FB_URL   = process.env.FB_URL || 'https://bb-app-sandbox.firebaseio.com/';
+exports.FB_URL   = process.env.FB_URL || 'https://<YOUR APP>.firebaseio.com';
 
 // The path in your Firebase where clients will write search requests
 exports.FB_REQ   = process.env.FB_REQ || 'search/request';
@@ -25,17 +20,13 @@ exports.FB_RES   = process.env.FB_RES || 'search/response';
 
 // See https://firebase.google.com/docs/server/setup for instructions
 // to auto-generate the service-account.json file
-exports.FB_SERVICEACCOUNT = process.env.FB_PROJECT_ID ? {
-  projectId: process.env.FB_PROJECT_ID,
-  clientEmail: process.env.FB_CLIENT_EMAIL,
-  privateKey: process.env.FB_PRIVATE_KEY
-} : 'service-account.json';
+exports.FB_SERVICEACCOUNT = process.env.FB_ACC || 'service-account.json';
 
 /** ElasticSearch Settings
  *********************************************/
 
-if( process.env.ES_URL ) {
-  processBonsaiUrl(exports, process.env.ES_URL);
+if( process.env.BONSAI_URL ) {
+  processBonsaiUrl(exports, process.env.BONSAI_URL);
 }
 else {
   // ElasticSearch server's host URL
@@ -68,96 +59,27 @@ else {
  * Format each path object with the same keys described above, and store the array of paths at whatever
  * location you specified in the FB_PATHS variable. Be sure to restrict that data in your Security Rules.
  ****************************************************/
-var duration = (process.env.FL_DAYS || 30) * 1000 * 60 * 60 * 24;
-var paths = [
+exports.paths = [
   {
-    name  : "response",
-    path  : "queue/responses",
-    index : "firebase",
-    type  : "logs",
-    parser: function(data) {
-      return {
-        response: {
-          data: normalizers.responseData(data.data),
-          status: data.status,
-          time: data.time
-        }
-      };
-    },
-    refBuilder: function(ref) {
-      return ref.orderByChild('time').startAt(Date.now() - duration);
-    }
+    path : "users",
+    index: "firebase",
+    type : "user"
   },
   {
-    name  : "request",
-    path  : "logs/queue/requests",
+    path  : "messages",
     index : "firebase",
-    type  : "logs",
-    resolver: function(data, key) {
-      return data.response;
-    },
-    parser: function(data, key) {
-      return {
-        request: {
-          _id: key,
-          action: data.action,
-          data: normalizers.requestData(data.data),
-          time: data.time
-        },
-        user: data.user,
-        venue: data.venue
-      };
-    },
-    refBuilder: function(ref) {
-      return ref.orderByChild('time').startAt(Date.now() - duration);
-    }
-  },
-  {
-    name  : "error",
-    path  : "logs/queue/errors",
-    index : "firebase",
-    type  : "logs",
-    filter: function(data) {
-      return !!data.task;
-    },
-    resolver: function(data, key) {
-      return data.task.response;
-    },
-    parser: function(data, key) {
-      return {
-        error: {
-          _id: key,
-          _log: data.task._log,
-          error: data.error,
-          state: data.state,
-          time: data.time
-        }
-      };
-    },
-    refBuilder: function(ref) {
-      return ref.orderByChild('time').startAt(Date.now() - duration);
-    }
+    type  : "message",
+    fields: ['msg', 'name'],
+    filter: function(data) { return data.name !== 'system'; }
+    // see readme
+    //, parser: function(data) { data.msg = data.msg.toLowerCase(); return data; }
+    // see readme
+    //, refBuilder: function(ref, path) { return ref.orderBy(path.sortField).startAt(Date.now()); }
   }
 ];
 
-var allPaths = _.map(paths, 'name')
-  , monitorPaths = process.env.FL_PATHS === 'all' ? allPaths : _.intersection(allPaths, (process.env.FL_PATHS || '').split(','));
-
-if (monitorPaths.length) {
-  paths = _.filter(paths, function(path) {
-    return monitorPaths.indexOf(path.name) > -1;
-  });
-  if (process.env.FL_DAYS === '0') {
-    paths = _.map(paths, _.partial(_.omit, _, 'refBuilder'));
-  }
-  exports.paths = paths;
-}
-
-// The flag to control whether the app will monitor & index firebase paths
-exports.FL_INDEX = !!process.env.FL_PATHS;
-
-// The flag to control whether the app will handle search requests
-exports.FL_SEARCH = !!process.env.FL_SEARCH;
+// Paths can also be stored in Firebase! See README for details.
+//exports.paths = process.env.FB_PATHS || null;
 
 // Additional options for ElasticSearch client
 exports.ES_OPTS = {
@@ -179,5 +101,5 @@ function processBonsaiUrl(exports, url) {
   exports.ES_PORT = 80;
   exports.ES_USER = matches[1];
   exports.ES_PASS = matches[2];
-  console.log('Configured using ES_URL environment variable', url, exports);
+  console.log('Configured using BONSAI_URL environment variable', url, exports);
 }

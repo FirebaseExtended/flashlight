@@ -12,8 +12,6 @@
 var _ = require('lodash')
   , normalizers = require('./lib/normalizers');
 
-console.log(process.env);
-
 // Your Firebase instance where we will listen and write search results
 exports.FB_URL   = process.env.FB_URL || 'https://bb-app-sandbox.firebaseio.com/';
 
@@ -28,14 +26,14 @@ exports.FB_RES   = process.env.FB_RES || 'search/response';
 exports.FB_SERVICEACCOUNT = process.env.FB_PROJECT_ID ? {
   projectId: process.env.FB_PROJECT_ID,
   clientEmail: process.env.FB_CLIENT_EMAIL,
-  privateKey: process.env.FB_PRIVATE_KEY
+  privateKey: process.env.FB_PRIVATE_KEY.replace(/\\n/g, '\n')
 } : 'service-account.json';
 
 /** ElasticSearch Settings
  *********************************************/
 
 if( process.env.ES_URL ) {
-  processBonsaiUrl(exports, process.env.ES_URL);
+  processESUrl(exports, process.env.ES_URL);
 }
 else {
   // ElasticSearch server's host URL
@@ -161,6 +159,7 @@ exports.FL_SEARCH = !!process.env.FL_SEARCH;
 
 // Additional options for ElasticSearch client
 exports.ES_OPTS = {
+  requestTimeout: process.env.ES_TIMEOUT || 120000
   //requestTimeout: 60000, maxSockets: 100, log: 'error'
 };
 
@@ -173,7 +172,7 @@ exports.CLEANUP_INTERVAL =
   3600 * 1000 /* once an hour */ :
   60 * 1000 /* once a minute */;
 
-function processBonsaiUrl(exports, url) {
+function processESUrl(exports, url) {
   var matches = url.match(/^https?:\/\/([^:]+):([^@]+)@([^/]+)\/?$/);
   exports.ES_HOST = matches[3];
   exports.ES_PORT = 80;

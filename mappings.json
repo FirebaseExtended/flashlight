@@ -1,0 +1,2704 @@
+{
+  "firebase" : {
+    "mappings" : {
+      "logs" : {
+        "properties" : {
+          "error" : {
+            "properties" : {
+              "_id" : {
+                "type" : "text",
+                "fields" : {
+                  "keyword" : {
+                    "type" : "keyword",
+                    "ignore_above" : 256
+                  }
+                }
+              },
+              "_log" : {
+                "type" : "text",
+                "fields" : {
+                  "keyword" : {
+                    "type" : "keyword",
+                    "ignore_above" : 256
+                  }
+                }
+              },
+              "error" : {
+                "properties" : {
+                  "attempts" : {
+                    "type" : "short"
+                  },
+                  "error" : {
+                    "type" : "text"
+                  },
+                  "error_stack" : {
+                    "type" : "text",
+                    "fields" : {
+                      "keyword" : {
+                        "type" : "keyword",
+                        "ignore_above" : 256
+                      }
+                    }
+                  },
+                  "previous_state" : {
+                    "type" : "text",
+                    "fields" : {
+                      "keyword" : {
+                        "type" : "keyword",
+                        "ignore_above" : 256
+                      }
+                    }
+                  }
+                }
+              },
+              "state" : {
+                "properties" : {
+                  "_owner" : {
+                    "type" : "text",
+                    "fields" : {
+                      "keyword" : {
+                        "type" : "keyword",
+                        "ignore_above" : 256
+                      }
+                    }
+                  },
+                  "_progress" : {
+                    "type" : "short"
+                  },
+                  "_state" : {
+                    "type" : "text",
+                    "fields" : {
+                      "keyword" : {
+                        "type" : "keyword",
+                        "ignore_above" : 256
+                      }
+                    }
+                  },
+                  "_state_changed" : {
+                    "type" : "date"
+                  }
+                }
+              },
+              "time" : {
+                "type" : "date"
+              }
+            }
+          },
+          "request" : {
+            "properties" : {
+              "_id" : {
+                "type" : "text",
+                "fields" : {
+                  "keyword" : {
+                    "type" : "keyword",
+                    "ignore_above" : 256
+                  }
+                }
+              },
+              "action" : {
+                "type" : "text",
+                "fields" : {
+                  "keyword" : {
+                    "type" : "keyword",
+                    "ignore_above" : 256
+                  }
+                }
+              },
+              "data" : {
+                "properties" : {
+                  "_value" : {
+                    "type" : "text",
+                    "fields" : {
+                      "keyword" : {
+                        "type" : "keyword",
+                        "ignore_above" : 256
+                      }
+                    }
+                  },
+                  "additionalField" : {
+                    "type" : "text",
+                    "fields" : {
+                      "keyword" : {
+                        "type" : "keyword",
+                        "ignore_above" : 256
+                      }
+                    }
+                  },
+                  "amount" : {
+                    "type" : "long"
+                  },
+                  "area" : {
+                    "properties" : {
+                      "_id" : {
+                        "type" : "text",
+                        "fields" : {
+                          "keyword" : {
+                            "type" : "keyword",
+                            "ignore_above" : 256
+                          }
+                        }
+                      },
+                      "background" : {
+                        "type" : "text",
+                        "fields" : {
+                          "keyword" : {
+                            "type" : "keyword",
+                            "ignore_above" : 256
+                          }
+                        }
+                      },
+                      "isEnabled" : {
+                        "type" : "boolean"
+                      },
+                      "name" : {
+                        "type" : "text",
+                        "fields" : {
+                          "keyword" : {
+                            "type" : "keyword",
+                            "ignore_above" : 256
+                          }
+                        }
+                      },
+                      "priority" : {
+                        "type" : "long"
+                      }
+                    }
+                  },
+                  "author" : {
+                    "type" : "text",
+                    "fields" : {
+                      "keyword" : {
+                        "type" : "keyword",
+                        "ignore_above" : 256
+                      }
+                    }
+                  },
+                  "card" : {
+                    "type" : "boolean"
+                  },
+                  "chit" : {
+                    "type" : "text",
+                    "fields" : {
+                      "keyword" : {
+                        "type" : "keyword",
+                        "ignore_above" : 256
+                      }
+                    }
+                  },
+                  "code" : {
+                    "type" : "text",
+                    "fields" : {
+                      "keyword" : {
+                        "type" : "keyword",
+                        "ignore_above" : 256
+                      }
+                    }
+                  },
+                  "company" : {
+                    "type" : "text",
+                    "fields" : {
+                      "keyword" : {
+                        "type" : "keyword",
+                        "ignore_above" : 256
+                      }
+                    }
+                  },
+                  "comps" : {
+                    "type" : "text",
+                    "fields" : {
+                      "keyword" : {
+                        "type" : "keyword",
+                        "ignore_above" : 256
+                      }
+                    }
+                  },
+                  "confidential" : {
+                    "type" : "text",
+                    "fields" : {
+                      "keyword" : {
+                        "type" : "keyword",
+                        "ignore_above" : 256
+                      }
+                    }
+                  },
+                  "country" : {
+                    "type" : "text",
+                    "fields" : {
+                      "keyword" : {
+                        "type" : "keyword",
+                        "ignore_above" : 256
+                      }
+                    }
+                  },
+                  "coupon" : {
+                    "type" : "text",
+                    "fields" : {
+                      "keyword" : {
+                        "type" : "keyword",
+                        "ignore_above" : 256
+                      }
+                    }
+                  },
+                  "current" : {
+                    "type" : "text",
+                    "fields" : {
+                      "keyword" : {
+                        "type" : "keyword",
+                        "ignore_above" : 256
+                      }
+                    }
+                  },
+                  "customer" : {
+                    "type" : "text",
+                    "fields" : {
+                      "keyword" : {
+                        "type" : "keyword",
+                        "ignore_above" : 256
+                      }
+                    }
+                  },
+                  "date" : {
+                    "type" : "date"
+                  },
+                  "days" : {
+                    "type" : "object",
+                    "enabled" : false
+                  },
+                  "email" : {
+                    "type" : "text",
+                    "fields" : {
+                      "keyword" : {
+                        "type" : "keyword",
+                        "ignore_above" : 256
+                      }
+                    }
+                  },
+                  "event" : {
+                    "properties" : {
+                      "_id" : {
+                        "type" : "text",
+                        "fields" : {
+                          "keyword" : {
+                            "type" : "keyword",
+                            "ignore_above" : 256
+                          }
+                        }
+                      },
+                      "ageGroup" : {
+                        "type" : "text",
+                        "fields" : {
+                          "keyword" : {
+                            "type" : "keyword",
+                            "ignore_above" : 256
+                          }
+                        }
+                      },
+                      "cutoff" : {
+                        "properties" : {
+                          "message" : {
+                            "type" : "text"
+                          },
+                          "time" : {
+                            "type" : "date"
+                          }
+                        }
+                      },
+                      "description" : {
+                        "type" : "text"
+                      },
+                      "dressCode" : {
+                        "type" : "text",
+                        "fields" : {
+                          "keyword" : {
+                            "type" : "keyword",
+                            "ignore_above" : 256
+                          }
+                        }
+                      },
+                      "end" : {
+                        "type" : "date"
+                      },
+                      "externalLink" : {
+                        "type" : "text",
+                        "fields" : {
+                          "keyword" : {
+                            "type" : "keyword",
+                            "ignore_above" : 256
+                          }
+                        }
+                      },
+                      "flyer" : {
+                        "properties" : {
+                          "_id" : {
+                            "type" : "text",
+                            "fields" : {
+                              "keyword" : {
+                                "type" : "keyword",
+                                "ignore_above" : 256
+                              }
+                            }
+                          },
+                          "height" : {
+                            "type" : "long"
+                          },
+                          "url" : {
+                            "type" : "text"
+                          },
+                          "width" : {
+                            "type" : "long"
+                          }
+                        }
+                      },
+                      "galabidID" : {
+                        "type" : "text",
+                        "fields" : {
+                          "keyword" : {
+                            "type" : "keyword",
+                            "ignore_above" : 256
+                          }
+                        }
+                      },
+                      "gender" : {
+                        "type" : "boolean"
+                      },
+                      "guestlist" : {
+                        "type" : "boolean"
+                      },
+                      "guestlistDescription" : {
+                        "type" : "text"
+                      },
+                      "guestlistTerms" : {
+                        "type" : "text"
+                      },
+                      "guestlistWebhook" : {
+                        "type" : "text"
+                      },
+                      "informationCollection" : {
+                        "properties" : {
+                          "address" : {
+                            "type" : "boolean"
+                          },
+                          "birthday" : {
+                            "type" : "boolean"
+                          },
+                          "buyerOnly" : {
+                            "type" : "boolean"
+                          },
+                          "city" : {
+                            "type" : "boolean"
+                          },
+                          "dietaryRestrictions" : {
+                            "type" : "boolean"
+                          },
+                          "phone" : {
+                            "type" : "boolean"
+                          },
+                          "postalCode" : {
+                            "type" : "boolean"
+                          },
+                          "shirtSize" : {
+                            "type" : "boolean"
+                          },
+                          "state" : {
+                            "type" : "boolean"
+                          }
+                        }
+                      },
+                      "integrations" : {
+                        "properties" : {
+                          "galabidID" : {
+                            "type" : "text",
+                            "fields" : {
+                              "keyword" : {
+                                "type" : "keyword",
+                                "ignore_above" : 256
+                              }
+                            }
+                          },
+                          "zapier" : {
+                            "properties" : {
+                              "guestList" : {
+                                "type" : "text",
+                                "fields" : {
+                                  "keyword" : {
+                                    "type" : "keyword",
+                                    "ignore_above" : 256
+                                  }
+                                }
+                              },
+                              "ticketSales" : {
+                                "type" : "text",
+                                "fields" : {
+                                  "keyword" : {
+                                    "type" : "keyword",
+                                    "ignore_above" : 256
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "location" : {
+                        "properties" : {
+                          "address" : {
+                            "type" : "text",
+                            "fields" : {
+                              "keyword" : {
+                                "type" : "keyword",
+                                "ignore_above" : 256
+                              }
+                            }
+                          },
+                          "address2" : {
+                            "type" : "text",
+                            "fields" : {
+                              "keyword" : {
+                                "type" : "keyword",
+                                "ignore_above" : 256
+                              }
+                            }
+                          },
+                          "city" : {
+                            "type" : "text",
+                            "fields" : {
+                              "keyword" : {
+                                "type" : "keyword",
+                                "ignore_above" : 256
+                              }
+                            }
+                          },
+                          "country" : {
+                            "type" : "text",
+                            "fields" : {
+                              "keyword" : {
+                                "type" : "keyword",
+                                "ignore_above" : 256
+                              }
+                            }
+                          },
+                          "name" : {
+                            "type" : "text",
+                            "fields" : {
+                              "keyword" : {
+                                "type" : "keyword",
+                                "ignore_above" : 256
+                              }
+                            }
+                          },
+                          "postal" : {
+                            "type" : "text",
+                            "fields" : {
+                              "keyword" : {
+                                "type" : "keyword",
+                                "ignore_above" : 256
+                              }
+                            }
+                          },
+                          "state" : {
+                            "type" : "text",
+                            "fields" : {
+                              "keyword" : {
+                                "type" : "keyword",
+                                "ignore_above" : 256
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "logoUrl" : {
+                        "type" : "text"
+                      },
+                      "name" : {
+                        "type" : "text",
+                        "fields" : {
+                          "keyword" : {
+                            "type" : "keyword",
+                            "ignore_above" : 256
+                          }
+                        }
+                      },
+                      "privateUntil" : {
+                        "type" : "text",
+                        "fields" : {
+                          "keyword" : {
+                            "type" : "keyword",
+                            "ignore_above" : 256
+                          }
+                        }
+                      },
+                      "promoters" : {
+                        "type" : "text",
+                        "fields" : {
+                          "keyword" : {
+                            "type" : "keyword",
+                            "ignore_above" : 256
+                          }
+                        }
+                      },
+                      "public" : {
+                        "type" : "boolean"
+                      },
+                      "reservationDescription" : {
+                        "type" : "text"
+                      },
+                      "reservationTerms" : {
+                        "type" : "text"
+                      },
+                      "reservations" : {
+                        "type" : "boolean"
+                      },
+                      "salesActive" : {
+                        "type" : "boolean"
+                      },
+                      "start" : {
+                        "type" : "date"
+                      },
+                      "terms" : {
+                        "properties" : {
+                          "guestlist" : {
+                            "type" : "text"
+                          },
+                          "reservation" : {
+                            "type" : "text"
+                          },
+                          "ticket" : {
+                            "type" : "text"
+                          }
+                        }
+                      },
+                      "theme" : {
+                        "properties" : {
+                          "accent" : {
+                            "properties" : {
+                              "b" : {
+                                "type" : "long"
+                              },
+                              "g" : {
+                                "type" : "long"
+                              },
+                              "r" : {
+                                "type" : "long"
+                              }
+                            }
+                          },
+                          "defaultEventView" : {
+                            "type" : "text",
+                            "fields" : {
+                              "keyword" : {
+                                "type" : "keyword",
+                                "ignore_above" : 256
+                              }
+                            }
+                          },
+                          "light" : {
+                            "type" : "boolean"
+                          }
+                        }
+                      },
+                      "ticketSaleWebhook" : {
+                        "type" : "text"
+                      },
+                      "types" : {
+                        "properties" : {
+                          "Concert" : {
+                            "type" : "boolean"
+                          },
+                          "Cruise" : {
+                            "type" : "boolean"
+                          },
+                          "Haunted House" : {
+                            "type" : "boolean"
+                          },
+                          "Nightclub" : {
+                            "type" : "boolean"
+                          },
+                          "Open Bar" : {
+                            "type" : "boolean"
+                          },
+                          "Over 35" : {
+                            "type" : "boolean"
+                          },
+                          "Pool Party" : {
+                            "type" : "boolean"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "fee" : {
+                    "type" : "long"
+                  },
+                  "general" : {
+                    "properties" : {
+                      "contact" : {
+                        "properties" : {
+                          "url" : {
+                            "type" : "text"
+                          }
+                        }
+                      },
+                      "currency" : {
+                        "type" : "text",
+                        "fields" : {
+                          "keyword" : {
+                            "type" : "keyword",
+                            "ignore_above" : 256
+                          }
+                        }
+                      },
+                      "location" : {
+                        "properties" : {
+                          "address2" : {
+                            "type" : "text",
+                            "fields" : {
+                              "keyword" : {
+                                "type" : "keyword",
+                                "ignore_above" : 256
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "name" : {
+                        "type" : "text",
+                        "fields" : {
+                          "keyword" : {
+                            "type" : "keyword",
+                            "ignore_above" : 256
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "girls" : {
+                    "type" : "long"
+                  },
+                  "guest" : {
+                    "properties" : {
+                      "_id" : {
+                        "type" : "text",
+                        "fields" : {
+                          "keyword" : {
+                            "type" : "keyword",
+                            "ignore_above" : 256
+                          }
+                        }
+                      },
+                      "addressLineOne" : {
+                        "type" : "text",
+                        "fields" : {
+                          "keyword" : {
+                            "type" : "keyword",
+                            "ignore_above" : 256
+                          }
+                        }
+                      },
+                      "addressLineTwo" : {
+                        "type" : "text",
+                        "fields" : {
+                          "keyword" : {
+                            "type" : "keyword",
+                            "ignore_above" : 256
+                          }
+                        }
+                      },
+                      "birthday" : {
+                        "type" : "date"
+                      },
+                      "city" : {
+                        "type" : "text",
+                        "fields" : {
+                          "keyword" : {
+                            "type" : "keyword",
+                            "ignore_above" : 256
+                          }
+                        }
+                      },
+                      "dietaryRestrictions" : {
+                        "type" : "text",
+                        "fields" : {
+                          "keyword" : {
+                            "type" : "keyword",
+                            "ignore_above" : 256
+                          }
+                        }
+                      },
+                      "email" : {
+                        "type" : "text",
+                        "fields" : {
+                          "keyword" : {
+                            "type" : "keyword",
+                            "ignore_above" : 256
+                          }
+                        }
+                      },
+                      "facebook" : {
+                        "type" : "text",
+                        "fields" : {
+                          "keyword" : {
+                            "type" : "keyword",
+                            "ignore_above" : 256
+                          }
+                        }
+                      },
+                      "firstName" : {
+                        "type" : "text",
+                        "fields" : {
+                          "keyword" : {
+                            "type" : "keyword",
+                            "ignore_above" : 256
+                          }
+                        }
+                      },
+                      "gender" : {
+                        "type" : "text",
+                        "fields" : {
+                          "keyword" : {
+                            "type" : "keyword",
+                            "ignore_above" : 256
+                          }
+                        }
+                      },
+                      "lastName" : {
+                        "type" : "text",
+                        "fields" : {
+                          "keyword" : {
+                            "type" : "keyword",
+                            "ignore_above" : 256
+                          }
+                        }
+                      },
+                      "phone" : {
+                        "type" : "text",
+                        "fields" : {
+                          "keyword" : {
+                            "type" : "keyword",
+                            "ignore_above" : 256
+                          }
+                        }
+                      },
+                      "shirtSize" : {
+                        "type" : "text",
+                        "fields" : {
+                          "keyword" : {
+                            "type" : "keyword",
+                            "ignore_above" : 256
+                          }
+                        }
+                      },
+                      "state" : {
+                        "type" : "text",
+                        "fields" : {
+                          "keyword" : {
+                            "type" : "keyword",
+                            "ignore_above" : 256
+                          }
+                        }
+                      },
+                      "twitter" : {
+                        "type" : "text",
+                        "fields" : {
+                          "keyword" : {
+                            "type" : "keyword",
+                            "ignore_above" : 256
+                          }
+                        }
+                      },
+                      "zip" : {
+                        "type" : "text",
+                        "fields" : {
+                          "keyword" : {
+                            "type" : "keyword",
+                            "ignore_above" : 256
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "guys" : {
+                    "type" : "long"
+                  },
+                  "header" : {
+                    "type" : "text",
+                    "fields" : {
+                      "keyword" : {
+                        "type" : "keyword",
+                        "ignore_above" : 256
+                      }
+                    }
+                  },
+                  "hours" : {
+                    "properties" : {
+                      "cutoff" : {
+                        "properties" : {
+                          "guestlist" : {
+                            "type" : "text",
+                            "fields" : {
+                              "keyword" : {
+                                "type" : "keyword",
+                                "ignore_above" : 256
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "days" : {
+                        "properties" : {
+                          "fri" : {
+                            "properties" : {
+                              "isOpen" : {
+                                "type" : "boolean"
+                              }
+                            }
+                          },
+                          "mon" : {
+                            "properties" : {
+                              "isOpen" : {
+                                "type" : "boolean"
+                              }
+                            }
+                          },
+                          "sat" : {
+                            "properties" : {
+                              "isOpen" : {
+                                "type" : "boolean"
+                              }
+                            }
+                          },
+                          "sun" : {
+                            "properties" : {
+                              "isOpen" : {
+                                "type" : "boolean"
+                              }
+                            }
+                          },
+                          "thu" : {
+                            "properties" : {
+                              "isOpen" : {
+                                "type" : "boolean"
+                              }
+                            }
+                          },
+                          "tue" : {
+                            "properties" : {
+                              "isOpen" : {
+                                "type" : "boolean"
+                              }
+                            }
+                          },
+                          "wed" : {
+                            "properties" : {
+                              "isOpen" : {
+                                "type" : "boolean"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "id" : {
+                    "type" : "text",
+                    "fields" : {
+                      "keyword" : {
+                        "type" : "keyword",
+                        "ignore_above" : 256
+                      }
+                    }
+                  },
+                  "integrations" : {
+                    "properties" : {
+                      "zapier" : {
+                        "properties" : {
+                          "guestList" : {
+                            "type" : "text",
+                            "fields" : {
+                              "keyword" : {
+                                "type" : "keyword",
+                                "ignore_above" : 256
+                              }
+                            }
+                          },
+                          "guestProfiles" : {
+                            "type" : "text",
+                            "fields" : {
+                              "keyword" : {
+                                "type" : "keyword",
+                                "ignore_above" : 256
+                              }
+                            }
+                          },
+                          "guestlist" : {
+                            "type" : "text",
+                            "fields" : {
+                              "keyword" : {
+                                "type" : "keyword",
+                                "ignore_above" : 256
+                              }
+                            }
+                          },
+                          "ticketSales" : {
+                            "type" : "text",
+                            "fields" : {
+                              "keyword" : {
+                                "type" : "keyword",
+                                "ignore_above" : 256
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "label" : {
+                    "type" : "text",
+                    "fields" : {
+                      "keyword" : {
+                        "type" : "keyword",
+                        "ignore_above" : 256
+                      }
+                    }
+                  },
+                  "message" : {
+                    "type" : "text"
+                  },
+                  "metaTitle" : {
+                    "type" : "text",
+                    "fields" : {
+                      "keyword" : {
+                        "type" : "keyword",
+                        "ignore_above" : 256
+                      }
+                    }
+                  },
+                  "mime" : {
+                    "type" : "text",
+                    "fields" : {
+                      "keyword" : {
+                        "type" : "keyword",
+                        "ignore_above" : 256
+                      }
+                    }
+                  },
+                  "name" : {
+                    "type" : "text",
+                    "fields" : {
+                      "keyword" : {
+                        "type" : "keyword",
+                        "ignore_above" : 256
+                      }
+                    }
+                  },
+                  "notes" : {
+                    "type" : "text"
+                  },
+                  "party" : {
+                    "properties" : {
+                      "_id" : {
+                        "type" : "text",
+                        "fields" : {
+                          "keyword" : {
+                            "type" : "keyword",
+                            "ignore_above" : 256
+                          }
+                        }
+                      },
+                      "additionalGuests" : {
+                        "properties" : {
+                          "email" : {
+                            "type" : "text",
+                            "fields" : {
+                              "keyword" : {
+                                "type" : "keyword",
+                                "ignore_above" : 256
+                              }
+                            }
+                          },
+                          "firstName" : {
+                            "type" : "text",
+                            "fields" : {
+                              "keyword" : {
+                                "type" : "keyword",
+                                "ignore_above" : 256
+                              }
+                            }
+                          },
+                          "lastName" : {
+                            "type" : "text",
+                            "fields" : {
+                              "keyword" : {
+                                "type" : "keyword",
+                                "ignore_above" : 256
+                              }
+                            }
+                          },
+                          "phone" : {
+                            "type" : "text",
+                            "fields" : {
+                              "keyword" : {
+                                "type" : "keyword",
+                                "ignore_above" : 256
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "comped" : {
+                        "type" : "boolean"
+                      },
+                      "date" : {
+                        "type" : "date"
+                      },
+                      "girls" : {
+                        "type" : "long"
+                      },
+                      "guest" : {
+                        "properties" : {
+                          "_id" : {
+                            "type" : "text",
+                            "fields" : {
+                              "keyword" : {
+                                "type" : "keyword",
+                                "ignore_above" : 256
+                              }
+                            }
+                          },
+                          "addressLineOne" : {
+                            "type" : "text",
+                            "fields" : {
+                              "keyword" : {
+                                "type" : "keyword",
+                                "ignore_above" : 256
+                              }
+                            }
+                          },
+                          "addressLineTwo" : {
+                            "type" : "text",
+                            "fields" : {
+                              "keyword" : {
+                                "type" : "keyword",
+                                "ignore_above" : 256
+                              }
+                            }
+                          },
+                          "birthday" : {
+                            "type" : "date"
+                          },
+                          "city" : {
+                            "type" : "text",
+                            "fields" : {
+                              "keyword" : {
+                                "type" : "keyword",
+                                "ignore_above" : 256
+                              }
+                            }
+                          },
+                          "dietaryRestrictions" : {
+                            "type" : "text",
+                            "fields" : {
+                              "keyword" : {
+                                "type" : "keyword",
+                                "ignore_above" : 256
+                              }
+                            }
+                          },
+                          "email" : {
+                            "type" : "text",
+                            "fields" : {
+                              "keyword" : {
+                                "type" : "keyword",
+                                "ignore_above" : 256
+                              }
+                            }
+                          },
+                          "firstName" : {
+                            "type" : "text",
+                            "fields" : {
+                              "keyword" : {
+                                "type" : "keyword",
+                                "ignore_above" : 256
+                              }
+                            }
+                          },
+                          "gender" : {
+                            "type" : "text",
+                            "fields" : {
+                              "keyword" : {
+                                "type" : "keyword",
+                                "ignore_above" : 256
+                              }
+                            }
+                          },
+                          "lastName" : {
+                            "type" : "text",
+                            "fields" : {
+                              "keyword" : {
+                                "type" : "keyword",
+                                "ignore_above" : 256
+                              }
+                            }
+                          },
+                          "phone" : {
+                            "type" : "text",
+                            "fields" : {
+                              "keyword" : {
+                                "type" : "keyword",
+                                "ignore_above" : 256
+                              }
+                            }
+                          },
+                          "postalCode" : {
+                            "type" : "text",
+                            "fields" : {
+                              "keyword" : {
+                                "type" : "keyword",
+                                "ignore_above" : 256
+                              }
+                            }
+                          },
+                          "shirtSize" : {
+                            "type" : "text",
+                            "fields" : {
+                              "keyword" : {
+                                "type" : "keyword",
+                                "ignore_above" : 256
+                              }
+                            }
+                          },
+                          "state" : {
+                            "type" : "text",
+                            "fields" : {
+                              "keyword" : {
+                                "type" : "keyword",
+                                "ignore_above" : 256
+                              }
+                            }
+                          },
+                          "zip" : {
+                            "type" : "text",
+                            "fields" : {
+                              "keyword" : {
+                                "type" : "keyword",
+                                "ignore_above" : 256
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "guys" : {
+                        "type" : "long"
+                      },
+                      "notes" : {
+                        "type" : "text"
+                      },
+                      "questions" : {
+                        "properties" : {
+                          "_id" : {
+                            "type" : "text",
+                            "fields" : {
+                              "keyword" : {
+                                "type" : "keyword",
+                                "ignore_above" : 256
+                              }
+                            }
+                          },
+                          "_value" : {
+                            "type" : "text",
+                            "fields" : {
+                              "keyword" : {
+                                "type" : "keyword",
+                                "ignore_above" : 256
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "referrer" : {
+                        "type" : "text",
+                        "fields" : {
+                          "keyword" : {
+                            "type" : "keyword",
+                            "ignore_above" : 256
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "password" : {
+                    "type" : "text",
+                    "fields" : {
+                      "keyword" : {
+                        "type" : "keyword",
+                        "ignore_above" : 256
+                      }
+                    }
+                  },
+                  "payment" : {
+                    "properties" : {
+                      "cover" : {
+                        "properties" : {
+                          "girls" : {
+                            "type" : "long"
+                          },
+                          "guys" : {
+                            "type" : "long"
+                          }
+                        }
+                      },
+                      "email" : {
+                        "type" : "text",
+                        "fields" : {
+                          "keyword" : {
+                            "type" : "keyword",
+                            "ignore_above" : 256
+                          }
+                        }
+                      },
+                      "ga" : {
+                        "properties" : {
+                          "girls" : {
+                            "type" : "long"
+                          },
+                          "guys" : {
+                            "type" : "long"
+                          }
+                        }
+                      },
+                      "name" : {
+                        "type" : "text",
+                        "fields" : {
+                          "keyword" : {
+                            "type" : "keyword",
+                            "ignore_above" : 256
+                          }
+                        }
+                      },
+                      "reservation" : {
+                        "properties" : {
+                          "gratuity" : {
+                            "type" : "scaled_float",
+                            "scaling_factor" : 100.0
+                          },
+                          "tax" : {
+                            "type" : "scaled_float",
+                            "scaling_factor" : 100.0
+                          }
+                        }
+                      },
+                      "signature" : {
+                        "type" : "text",
+                        "fields" : {
+                          "keyword" : {
+                            "type" : "keyword",
+                            "ignore_above" : 256
+                          }
+                        }
+                      },
+                      "token" : {
+                        "type" : "text",
+                        "fields" : {
+                          "keyword" : {
+                            "type" : "keyword",
+                            "ignore_above" : 256
+                          }
+                        }
+                      },
+                      "track1" : {
+                        "type" : "text",
+                        "fields" : {
+                          "keyword" : {
+                            "type" : "keyword",
+                            "ignore_above" : 256
+                          }
+                        }
+                      },
+                      "type" : {
+                        "type" : "text",
+                        "fields" : {
+                          "keyword" : {
+                            "type" : "keyword",
+                            "ignore_above" : 256
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "phone" : {
+                    "type" : "text",
+                    "fields" : {
+                      "keyword" : {
+                        "type" : "keyword",
+                        "ignore_above" : 256
+                      }
+                    }
+                  },
+                  "plan" : {
+                    "type" : "text",
+                    "fields" : {
+                      "keyword" : {
+                        "type" : "keyword",
+                        "ignore_above" : 256
+                      }
+                    }
+                  },
+                  "prevStatus" : {
+                    "type" : "boolean"
+                  },
+                  "prices" : {
+                    "properties" : {
+                      "girls" : {
+                        "type" : "long"
+                      },
+                      "guys" : {
+                        "type" : "long"
+                      }
+                    }
+                  },
+                  "printChit" : {
+                    "type" : "boolean"
+                  },
+                  "priority" : {
+                    "type" : "scaled_float",
+                    "scaling_factor": 100.0
+                  },
+                  "promo" : {
+                    "properties" : {
+                      "_id" : {
+                        "type" : "text",
+                        "fields" : {
+                          "keyword" : {
+                            "type" : "keyword",
+                            "ignore_above" : 256
+                          }
+                        }
+                      },
+                      "active" : {
+                        "type" : "boolean"
+                      },
+                      "discount" : {
+                        "type" : "text",
+                        "fields" : {
+                          "keyword" : {
+                            "type" : "keyword",
+                            "ignore_above" : 256
+                          }
+                        }
+                      },
+                      "tickets" : {
+                        "type" : "text",
+                        "fields" : {
+                          "keyword" : {
+                            "type" : "keyword",
+                            "ignore_above" : 256
+                          }
+                        }
+                      },
+                      "uses" : {
+                        "type" : "long"
+                      }
+                    }
+                  },
+                  "promotion" : {
+                    "properties" : {
+                      "_id" : {
+                        "type" : "text",
+                        "fields" : {
+                          "keyword" : {
+                            "type" : "keyword",
+                            "ignore_above" : 256
+                          }
+                        }
+                      },
+                      "days" : {
+                        "type" : "text",
+                        "fields" : {
+                          "keyword" : {
+                            "type" : "keyword",
+                            "ignore_above" : 256
+                          }
+                        }
+                      },
+                      "end" : {
+                        "type" : "text",
+                        "fields" : {
+                          "keyword" : {
+                            "type" : "keyword",
+                            "ignore_above" : 256
+                          }
+                        }
+                      },
+                      "girl" : {
+                        "type" : "long"
+                      },
+                      "guy" : {
+                        "type" : "long"
+                      },
+                      "isEnabled" : {
+                        "type" : "boolean"
+                      },
+                      "name" : {
+                        "type" : "text",
+                        "fields" : {
+                          "keyword" : {
+                            "type" : "keyword",
+                            "ignore_above" : 256
+                          }
+                        }
+                      },
+                      "start" : {
+                        "type" : "text",
+                        "fields" : {
+                          "keyword" : {
+                            "type" : "keyword",
+                            "ignore_above" : 256
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "published" : {
+                    "type" : "boolean"
+                  },
+                  "question" : {
+                    "properties" : {
+                      "label" : {
+                        "type" : "text",
+                        "fields" : {
+                          "keyword" : {
+                            "type" : "keyword",
+                            "ignore_above" : 256
+                          }
+                        }
+                      },
+                      "options" : {
+                        "type" : "text",
+                        "fields" : {
+                          "keyword" : {
+                            "type" : "keyword",
+                            "ignore_above" : 256
+                          }
+                        }
+                      },
+                      "phrase" : {
+                        "type" : "text",
+                        "fields" : {
+                          "keyword" : {
+                            "type" : "keyword",
+                            "ignore_above" : 256
+                          }
+                        }
+                      },
+                      "type" : {
+                        "type" : "text",
+                        "fields" : {
+                          "keyword" : {
+                            "type" : "keyword",
+                            "ignore_above" : 256
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "referrer" : {
+                    "properties" : {
+                      "name" : {
+                        "type" : "text",
+                        "fields" : {
+                          "keyword" : {
+                            "type" : "keyword",
+                            "ignore_above" : 256
+                          }
+                        }
+                      },
+                      "type" : {
+                        "type" : "text",
+                        "fields" : {
+                          "keyword" : {
+                            "type" : "keyword",
+                            "ignore_above" : 256
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "refund" : {
+                    "type" : "text",
+                    "fields" : {
+                      "keyword" : {
+                        "type" : "keyword",
+                        "ignore_above" : 256
+                      }
+                    }
+                  },
+                  "reservation" : {
+                    "properties" : {
+                      "date" : {
+                        "type" : "date"
+                      },
+                      "girls" : {
+                        "type" : "long"
+                      },
+                      "guest" : {
+                        "properties" : {
+                          "_id" : {
+                            "type" : "text",
+                            "fields" : {
+                              "keyword" : {
+                                "type" : "keyword",
+                                "ignore_above" : 256
+                              }
+                            }
+                          },
+                          "birthday" : {
+                            "type" : "date"
+                          },
+                          "email" : {
+                            "type" : "text",
+                            "fields" : {
+                              "keyword" : {
+                                "type" : "keyword",
+                                "ignore_above" : 256
+                              }
+                            }
+                          },
+                          "firstName" : {
+                            "type" : "text",
+                            "fields" : {
+                              "keyword" : {
+                                "type" : "keyword",
+                                "ignore_above" : 256
+                              }
+                            }
+                          },
+                          "gender" : {
+                            "type" : "text",
+                            "fields" : {
+                              "keyword" : {
+                                "type" : "keyword",
+                                "ignore_above" : 256
+                              }
+                            }
+                          },
+                          "lastName" : {
+                            "type" : "text",
+                            "fields" : {
+                              "keyword" : {
+                                "type" : "keyword",
+                                "ignore_above" : 256
+                              }
+                            }
+                          },
+                          "phone" : {
+                            "type" : "text",
+                            "fields" : {
+                              "keyword" : {
+                                "type" : "keyword",
+                                "ignore_above" : 256
+                              }
+                            }
+                          },
+                          "shirtSize" : {
+                            "type" : "text",
+                            "fields" : {
+                              "keyword" : {
+                                "type" : "keyword",
+                                "ignore_above" : 256
+                              }
+                            }
+                          },
+                          "zip" : {
+                            "type" : "text",
+                            "fields" : {
+                              "keyword" : {
+                                "type" : "keyword",
+                                "ignore_above" : 256
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "guys" : {
+                        "type" : "long"
+                      },
+                      "minBottles" : {
+                        "type" : "short"
+                      },
+                      "minSpend" : {
+                        "type" : "long"
+                      },
+                      "notes" : {
+                        "type" : "text"
+                      },
+                      "party" : {
+                        "type" : "text",
+                        "fields" : {
+                          "keyword" : {
+                            "type" : "keyword",
+                            "ignore_above" : 256
+                          }
+                        }
+                      },
+                      "referrer" : {
+                        "type" : "text",
+                        "fields" : {
+                          "keyword" : {
+                            "type" : "keyword",
+                            "ignore_above" : 256
+                          }
+                        }
+                      },
+                      "servers" : {
+                        "type" : "text",
+                        "fields" : {
+                          "keyword" : {
+                            "type" : "keyword",
+                            "ignore_above" : 256
+                          }
+                        }
+                      },
+                      "spends" : {
+                        "properties" : {
+                          "gratuity" : {
+                            "type" : "long"
+                          },
+                          "subtotal" : {
+                            "type" : "long"
+                          },
+                          "tax" : {
+                            "type" : "long"
+                          },
+                          "tip" : {
+                            "type" : "long"
+                          },
+                          "total" : {
+                            "type" : "long"
+                          }
+                        }
+                      },
+                      "status" : {
+                        "type" : "text",
+                        "fields" : {
+                          "keyword" : {
+                            "type" : "keyword",
+                            "ignore_above" : 256
+                          }
+                        }
+                      },
+                      "tables" : {
+                        "properties" : {
+                          "area" : {
+                            "type" : "text",
+                            "fields" : {
+                              "keyword" : {
+                                "type" : "keyword",
+                                "ignore_above" : 256
+                              }
+                            }
+                          },
+                          "table" : {
+                            "type" : "text",
+                            "fields" : {
+                              "keyword" : {
+                                "type" : "keyword",
+                                "ignore_above" : 256
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "reset" : {
+                    "type" : "text",
+                    "fields" : {
+                      "keyword" : {
+                        "type" : "keyword",
+                        "ignore_above" : 256
+                      }
+                    }
+                  },
+                  "role" : {
+                    "type" : "text",
+                    "fields" : {
+                      "keyword" : {
+                        "type" : "keyword",
+                        "ignore_above" : 256
+                      }
+                    }
+                  },
+                  "roles" : {
+                    "properties" : {
+                      "13" : {
+                        "type" : "long"
+                      },
+                      "18" : {
+                        "type" : "long"
+                      }
+                    }
+                  },
+                  "sendTo" : {
+                    "type" : "text",
+                    "fields" : {
+                      "keyword" : {
+                        "type" : "keyword",
+                        "ignore_above" : 256
+                      }
+                    }
+                  },
+                  "settings" : {
+                    "properties" : {
+                      "config" : {
+                        "properties" : {
+                          "service" : {
+                            "properties" : {
+                              "credit" : {
+                                "type" : "text",
+                                "fields" : {
+                                  "keyword" : {
+                                    "type" : "keyword",
+                                    "ignore_above" : 256
+                                  }
+                                }
+                              },
+                              "limits" : {
+                                "properties" : {
+                                  "credit" : {
+                                    "properties" : {
+                                      "max" : {
+                                        "type" : "long"
+                                      },
+                                      "min" : {
+                                        "type" : "long"
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "general" : {
+                        "properties" : {
+                          "contact" : {
+                            "properties" : {
+                              "email" : {
+                                "type" : "text",
+                                "fields" : {
+                                  "keyword" : {
+                                    "type" : "keyword",
+                                    "ignore_above" : 256
+                                  }
+                                }
+                              },
+                              "name" : {
+                                "type" : "text",
+                                "fields" : {
+                                  "keyword" : {
+                                    "type" : "keyword",
+                                    "ignore_above" : 256
+                                  }
+                                }
+                              },
+                              "phone" : {
+                                "type" : "text",
+                                "fields" : {
+                                  "keyword" : {
+                                    "type" : "keyword",
+                                    "ignore_above" : 256
+                                  }
+                                }
+                              },
+                              "url" : {
+                                "type" : "text"
+                              }
+                            }
+                          },
+                          "location" : {
+                            "properties" : {
+                              "address" : {
+                                "type" : "text",
+                                "fields" : {
+                                  "keyword" : {
+                                    "type" : "keyword",
+                                    "ignore_above" : 256
+                                  }
+                                }
+                              },
+                              "city" : {
+                                "type" : "text",
+                                "fields" : {
+                                  "keyword" : {
+                                    "type" : "keyword",
+                                    "ignore_above" : 256
+                                  }
+                                }
+                              },
+                              "country" : {
+                                "type" : "text",
+                                "fields" : {
+                                  "keyword" : {
+                                    "type" : "keyword",
+                                    "ignore_above" : 256
+                                  }
+                                }
+                              },
+                              "postal" : {
+                                "type" : "text",
+                                "fields" : {
+                                  "keyword" : {
+                                    "type" : "keyword",
+                                    "ignore_above" : 256
+                                  }
+                                }
+                              },
+                              "state" : {
+                                "type" : "text",
+                                "fields" : {
+                                  "keyword" : {
+                                    "type" : "keyword",
+                                    "ignore_above" : 256
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "name" : {
+                            "type" : "text",
+                            "fields" : {
+                              "keyword" : {
+                                "type" : "keyword",
+                                "ignore_above" : 256
+                              }
+                            }
+                          },
+                          "timezone" : {
+                            "type" : "text",
+                            "fields" : {
+                              "keyword" : {
+                                "type" : "keyword",
+                                "ignore_above" : 256
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "setup" : {
+                    "type" : "text",
+                    "fields" : {
+                      "keyword" : {
+                        "type" : "keyword",
+                        "ignore_above" : 256
+                      }
+                    }
+                  },
+                  "subscription" : {
+                    "type" : "text",
+                    "fields" : {
+                      "keyword" : {
+                        "type" : "keyword",
+                        "ignore_above" : 256
+                      }
+                    }
+                  },
+                  "subtitle" : {
+                    "type" : "text",
+                    "fields" : {
+                      "keyword" : {
+                        "type" : "keyword",
+                        "ignore_above" : 256
+                      }
+                    }
+                  },
+                  "table" : {
+                    "properties" : {
+                      "isEnabled" : {
+                        "type" : "boolean"
+                      },
+                      "label" : {
+                        "type" : "text",
+                        "fields" : {
+                          "keyword" : {
+                            "type" : "keyword",
+                            "ignore_above" : 256
+                          }
+                        }
+                      },
+                      "minBottles" : {
+                        "type" : "short"
+                      },
+                      "minSpend" : {
+                        "type" : "long"
+                      },
+                      "priority" : {
+                        "type" : "long"
+                      },
+                      "seats" : {
+                        "type" : "long"
+                      },
+                      "shape" : {
+                        "type" : "text",
+                        "fields" : {
+                          "keyword" : {
+                            "type" : "keyword",
+                            "ignore_above" : 256
+                          }
+                        }
+                      },
+                      "x" : {
+                        "type" : "long"
+                      },
+                      "y" : {
+                        "type" : "long"
+                      }
+                    }
+                  },
+                  "tags" : {
+                    "type" : "text",
+                    "fields" : {
+                      "keyword" : {
+                        "type" : "keyword",
+                        "ignore_above" : 256
+                      }
+                    }
+                  },
+                  "terms" : {
+                    "type" : "text",
+                    "fields" : {
+                      "keyword" : {
+                        "type" : "keyword",
+                        "ignore_above" : 256
+                      }
+                    }
+                  },
+                  "text" : {
+                    "type" : "text",
+                    "fields" : {
+                      "keyword" : {
+                        "type" : "keyword",
+                        "ignore_above" : 256
+                      }
+                    }
+                  },
+                  "ticket" : {
+                    "properties" : {
+                      "_id" : {
+                        "type" : "text",
+                        "fields" : {
+                          "keyword" : {
+                            "type" : "keyword",
+                            "ignore_above" : 256
+                          }
+                        }
+                      },
+                      "active" : {
+                        "type" : "boolean"
+                      },
+                      "additionalField" : {
+                        "type" : "text",
+                        "fields" : {
+                          "keyword" : {
+                            "type" : "keyword",
+                            "ignore_above" : 256
+                          }
+                        }
+                      },
+                      "cutoff" : {
+                        "type" : "text",
+                        "fields" : {
+                          "keyword" : {
+                            "type" : "keyword",
+                            "ignore_above" : 256
+                          }
+                        }
+                      },
+                      "description" : {
+                        "type" : "text"
+                      },
+                      "message" : {
+                        "type" : "text"
+                      },
+                      "name" : {
+                        "type" : "text",
+                        "fields" : {
+                          "keyword" : {
+                            "type" : "keyword",
+                            "ignore_above" : 256
+                          }
+                        }
+                      },
+                      "notify" : {
+                        "type" : "boolean"
+                      },
+                      "price" : {
+                        "type" : "long"
+                      },
+                      "quantity" : {
+                        "type" : "long"
+                      },
+                      "questions" : {
+                        "properties" : {
+                          "_id" : {
+                            "type" : "text",
+                            "fields" : {
+                              "keyword" : {
+                                "type" : "keyword",
+                                "ignore_above" : 256
+                              }
+                            }
+                          },
+                          "_value" : {
+                            "type" : "text",
+                            "fields" : {
+                              "keyword" : {
+                                "type" : "keyword",
+                                "ignore_above" : 256
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "terms" : {
+                        "type" : "text",
+                        "fields" : {
+                          "keyword" : {
+                            "type" : "keyword",
+                            "ignore_above" : 256
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "ticketSale" : {
+                    "type" : "text",
+                    "fields" : {
+                      "keyword" : {
+                        "type" : "keyword",
+                        "ignore_above" : 256
+                      }
+                    }
+                  },
+                  "ticket_sale" : {
+                    "type" : "text",
+                    "fields" : {
+                      "keyword" : {
+                        "type" : "keyword",
+                        "ignore_above" : 256
+                      }
+                    }
+                  },
+                  "time" : {
+                    "type" : "date"
+                  },
+                  "title" : {
+                    "type" : "text",
+                    "fields" : {
+                      "keyword" : {
+                        "type" : "keyword",
+                        "ignore_above" : 256
+                      }
+                    }
+                  },
+                  "token" : {
+                    "type" : "text",
+                    "fields" : {
+                      "keyword" : {
+                        "type" : "keyword",
+                        "ignore_above" : 256
+                      }
+                    }
+                  },
+                  "total" : {
+                    "type" : "text",
+                    "fields" : {
+                      "keyword" : {
+                        "type" : "keyword",
+                        "ignore_above" : 256
+                      }
+                    }
+                  },
+                  "trial" : {
+                    "type" : "long"
+                  },
+                  "type" : {
+                    "type" : "text",
+                    "fields" : {
+                      "keyword" : {
+                        "type" : "keyword",
+                        "ignore_above" : 256
+                      }
+                    }
+                  },
+                  "user" : {
+                    "properties" : {
+                      "_id" : {
+                        "type" : "text",
+                        "fields" : {
+                          "keyword" : {
+                            "type" : "keyword",
+                            "ignore_above" : 256
+                          }
+                        }
+                      },
+                      "email" : {
+                        "type" : "text",
+                        "fields" : {
+                          "keyword" : {
+                            "type" : "keyword",
+                            "ignore_above" : 256
+                          }
+                        }
+                      },
+                      "firstName" : {
+                        "type" : "text",
+                        "fields" : {
+                          "keyword" : {
+                            "type" : "keyword",
+                            "ignore_above" : 256
+                          }
+                        }
+                      },
+                      "lastName" : {
+                        "type" : "text",
+                        "fields" : {
+                          "keyword" : {
+                            "type" : "keyword",
+                            "ignore_above" : 256
+                          }
+                        }
+                      },
+                      "phone" : {
+                        "type" : "text",
+                        "fields" : {
+                          "keyword" : {
+                            "type" : "keyword",
+                            "ignore_above" : 256
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "venue" : {
+                    "properties" : {
+                      "_id" : {
+                        "type" : "text",
+                        "fields" : {
+                          "keyword" : {
+                            "type" : "keyword",
+                            "ignore_above" : 256
+                          }
+                        }
+                      },
+                      "general" : {
+                        "properties" : {
+                          "contact" : {
+                            "properties" : {
+                              "email" : {
+                                "type" : "text",
+                                "fields" : {
+                                  "keyword" : {
+                                    "type" : "keyword",
+                                    "ignore_above" : 256
+                                  }
+                                }
+                              },
+                              "name" : {
+                                "type" : "text",
+                                "fields" : {
+                                  "keyword" : {
+                                    "type" : "keyword",
+                                    "ignore_above" : 256
+                                  }
+                                }
+                              },
+                              "phone" : {
+                                "type" : "text",
+                                "fields" : {
+                                  "keyword" : {
+                                    "type" : "keyword",
+                                    "ignore_above" : 256
+                                  }
+                                }
+                              },
+                              "url" : {
+                                "type" : "text"
+                              }
+                            }
+                          },
+                          "currency" : {
+                            "type" : "text",
+                            "fields" : {
+                              "keyword" : {
+                                "type" : "keyword",
+                                "ignore_above" : 256
+                              }
+                            }
+                          },
+                          "location" : {
+                            "properties" : {
+                              "address" : {
+                                "type" : "text",
+                                "fields" : {
+                                  "keyword" : {
+                                    "type" : "keyword",
+                                    "ignore_above" : 256
+                                  }
+                                }
+                              },
+                              "address2" : {
+                                "type" : "text",
+                                "fields" : {
+                                  "keyword" : {
+                                    "type" : "keyword",
+                                    "ignore_above" : 256
+                                  }
+                                }
+                              },
+                              "city" : {
+                                "type" : "text",
+                                "fields" : {
+                                  "keyword" : {
+                                    "type" : "keyword",
+                                    "ignore_above" : 256
+                                  }
+                                }
+                              },
+                              "country" : {
+                                "type" : "text",
+                                "fields" : {
+                                  "keyword" : {
+                                    "type" : "keyword",
+                                    "ignore_above" : 256
+                                  }
+                                }
+                              },
+                              "postal" : {
+                                "type" : "text",
+                                "fields" : {
+                                  "keyword" : {
+                                    "type" : "keyword",
+                                    "ignore_above" : 256
+                                  }
+                                }
+                              },
+                              "state" : {
+                                "type" : "text",
+                                "fields" : {
+                                  "keyword" : {
+                                    "type" : "keyword",
+                                    "ignore_above" : 256
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "name" : {
+                            "type" : "text",
+                            "fields" : {
+                              "keyword" : {
+                                "type" : "keyword",
+                                "ignore_above" : 256
+                              }
+                            }
+                          },
+                          "timezone" : {
+                            "type" : "text",
+                            "fields" : {
+                              "keyword" : {
+                                "type" : "keyword",
+                                "ignore_above" : 256
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "time" : {
+                "type" : "date"
+              }
+            }
+          },
+          "response" : {
+            "properties" : {
+              "data" : {
+                "properties" : {
+                  "_id" : {
+                    "type" : "text",
+                    "fields" : {
+                      "keyword" : {
+                        "type" : "keyword",
+                        "ignore_above" : 256
+                      }
+                    }
+                  },
+                  "_value" : {
+                    "type" : "text",
+                    "fields" : {
+                      "keyword" : {
+                        "type" : "keyword",
+                        "ignore_above" : 256
+                      }
+                    }
+                  },
+                  "blog-image" : {
+                    "type" : "text",
+                    "fields" : {
+                      "keyword" : {
+                        "type" : "keyword",
+                        "ignore_above" : 256
+                      }
+                    }
+                  },
+                  "cancelled" : {
+                    "type" : "long"
+                  },
+                  "cdn" : {
+                    "type" : "text",
+                    "fields" : {
+                      "keyword" : {
+                        "type" : "keyword",
+                        "ignore_above" : 256
+                      }
+                    }
+                  },
+                  "chit" : {
+                    "properties" : {
+                      "girls" : {
+                        "type" : "long"
+                      },
+                      "guys" : {
+                        "type" : "long"
+                      },
+                      "hash" : {
+                        "type" : "text",
+                        "fields" : {
+                          "keyword" : {
+                            "type" : "keyword",
+                            "ignore_above" : 256
+                          }
+                        }
+                      },
+                      "purchaseDate" : {
+                        "type" : "date"
+                      },
+                      "qr" : {
+                        "type" : "text",
+                        "fields" : {
+                          "keyword" : {
+                            "type" : "keyword",
+                            "ignore_above" : 256
+                          }
+                        }
+                      },
+                      "total" : {
+                        "type" : "long"
+                      },
+                      "type" : {
+                        "type" : "text",
+                        "fields" : {
+                          "keyword" : {
+                            "type" : "keyword",
+                            "ignore_above" : 256
+                          }
+                        }
+                      },
+                      "venue" : {
+                        "type" : "text",
+                        "fields" : {
+                          "keyword" : {
+                            "type" : "keyword",
+                            "ignore_above" : 256
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "details" : {
+                    "properties" : {
+                      "date" : {
+                        "type" : "date"
+                      },
+                      "girls" : {
+                        "type" : "long"
+                      },
+                      "guys" : {
+                        "type" : "long"
+                      },
+                      "id" : {
+                        "type" : "text",
+                        "fields" : {
+                          "keyword" : {
+                            "type" : "keyword",
+                            "ignore_above" : 256
+                          }
+                        }
+                      },
+                      "prices" : {
+                        "properties" : {
+                          "girls" : {
+                            "type" : "long"
+                          },
+                          "guys" : {
+                            "type" : "long"
+                          }
+                        }
+                      },
+                      "promotion" : {
+                        "type" : "text",
+                        "fields" : {
+                          "keyword" : {
+                            "type" : "keyword",
+                            "ignore_above" : 256
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "export" : {
+                    "type" : "text",
+                    "fields" : {
+                      "keyword" : {
+                        "type" : "keyword",
+                        "ignore_above" : 256
+                      }
+                    }
+                  },
+                  "flyer" : {
+                    "type" : "text",
+                    "fields" : {
+                      "keyword" : {
+                        "type" : "keyword",
+                        "ignore_above" : 256
+                      }
+                    }
+                  },
+                  "girls" : {
+                    "type" : "long"
+                  },
+                  "guest" : {
+                    "type" : "text",
+                    "fields" : {
+                      "keyword" : {
+                        "type" : "keyword",
+                        "ignore_above" : 256
+                      }
+                    }
+                  },
+                  "guest-export" : {
+                    "type" : "text",
+                    "fields" : {
+                      "keyword" : {
+                        "type" : "keyword",
+                        "ignore_above" : 256
+                      }
+                    }
+                  },
+                  "guys" : {
+                    "type" : "long"
+                  },
+                  "hash" : {
+                    "type" : "text",
+                    "fields" : {
+                      "keyword" : {
+                        "type" : "keyword",
+                        "ignore_above" : 256
+                      }
+                    }
+                  },
+                  "id" : {
+                    "type" : "text",
+                    "fields" : {
+                      "keyword" : {
+                        "type" : "keyword",
+                        "ignore_above" : 256
+                      }
+                    }
+                  },
+                  "key" : {
+                    "type" : "text",
+                    "fields" : {
+                      "keyword" : {
+                        "type" : "keyword",
+                        "ignore_above" : 256
+                      }
+                    }
+                  },
+                  "name" : {
+                    "type" : "text",
+                    "fields" : {
+                      "keyword" : {
+                        "type" : "keyword",
+                        "ignore_above" : 256
+                      }
+                    }
+                  },
+                  "paid" : {
+                    "type" : "long"
+                  },
+                  "party" : {
+                    "type" : "text",
+                    "fields" : {
+                      "keyword" : {
+                        "type" : "keyword",
+                        "ignore_above" : 256
+                      }
+                    }
+                  },
+                  "promo" : {
+                    "type" : "text",
+                    "fields" : {
+                      "keyword" : {
+                        "type" : "keyword",
+                        "ignore_above" : 256
+                      }
+                    }
+                  },
+                  "purchaseDate" : {
+                    "type" : "date"
+                  },
+                  "putUrl" : {
+                    "type" : "text"
+                  },
+                  "qr" : {
+                    "type" : "text",
+                    "fields" : {
+                      "keyword" : {
+                        "type" : "keyword",
+                        "ignore_above" : 256
+                      }
+                    }
+                  },
+                  "refunded" : {
+                    "type" : "long"
+                  },
+                  "signature" : {
+                    "type" : "text",
+                    "fields" : {
+                      "keyword" : {
+                        "type" : "keyword",
+                        "ignore_above" : 256
+                      }
+                    }
+                  },
+                  "status" : {
+                    "type" : "text",
+                    "fields" : {
+                      "keyword" : {
+                        "type" : "keyword",
+                        "ignore_above" : 256
+                      }
+                    }
+                  },
+                  "ticketSale" : {
+                    "type" : "text",
+                    "fields" : {
+                      "keyword" : {
+                        "type" : "keyword",
+                        "ignore_above" : 256
+                      }
+                    }
+                  },
+                  "ticket_sale" : {
+                    "type" : "text",
+                    "fields" : {
+                      "keyword" : {
+                        "type" : "keyword",
+                        "ignore_above" : 256
+                      }
+                    }
+                  },
+                  "token" : {
+                    "type" : "text",
+                    "fields" : {
+                      "keyword" : {
+                        "type" : "keyword",
+                        "ignore_above" : 256
+                      }
+                    }
+                  },
+                  "total" : {
+                    "type" : "long"
+                  },
+                  "type" : {
+                    "type" : "text",
+                    "fields" : {
+                      "keyword" : {
+                        "type" : "keyword",
+                        "ignore_above" : 256
+                      }
+                    }
+                  },
+                  "unit" : {
+                    "properties" : {
+                      "discount" : {
+                        "type" : "long"
+                      },
+                      "fee" : {
+                        "properties" : {
+                          "cash" : {
+                            "type" : "long"
+                          },
+                          "credit" : {
+                            "type" : "long"
+                          }
+                        }
+                      },
+                      "price" : {
+                        "type" : "long"
+                      }
+                    }
+                  },
+                  "venue" : {
+                    "type" : "text",
+                    "fields" : {
+                      "keyword" : {
+                        "type" : "keyword",
+                        "ignore_above" : 256
+                      }
+                    }
+                  }
+                }
+              },
+              "status" : {
+                "type" : "text",
+                "fields" : {
+                  "keyword" : {
+                    "type" : "keyword",
+                    "ignore_above" : 256
+                  }
+                }
+              },
+              "time" : {
+                "type" : "date"
+              }
+            }
+          },
+          "user" : {
+            "type" : "text",
+            "fields" : {
+              "keyword" : {
+                "type" : "keyword",
+                "ignore_above" : 256
+              }
+            }
+          },
+          "venue" : {
+            "type" : "text",
+            "fields" : {
+              "keyword" : {
+                "type" : "keyword",
+                "ignore_above" : 256
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

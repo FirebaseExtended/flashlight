@@ -4,9 +4,7 @@
   "description": "A search utility for Firebase",
   "homepage": "https://github.com/firebase/flashlight",
   "scripts": {
-    "start": "node app.js",
-    "monitor": "nodemon app.js",
-    "deploy": "gcloud app deploy"
+    "start": "FL_SEARCH=true node ./app.js"
   },
   "main": "app.js",
   "devDependencies": {},
@@ -14,6 +12,11 @@
     "JQDeferred": "~1.9.1",
     "colors": "~0.6.2",
     "elasticsearch": "^11.0.1",
-    "firebase-admin": "^4.0.4"
+    "firebase-admin": "^4.0.4",
+    "lodash": "^4.17.4"
+  },
+  "engines": {
+    "node": "5.4.0",
+    "npm": "3.5.2"
   }
 }
