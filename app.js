@@ -4,8 +4,9 @@
  * @version 0.3, 3 June 2014
  */
 
-var elasticsearch = require('elasticsearch'),
-  conf = require('./config'),
+exports.init = function(pathToConfig) {
+  var elasticsearch = require('elasticsearch'),
+  conf = require(pathToConfig),
   fbutil = require('./lib/fbutil'),
   PathMonitor = require('./lib/PathMonitor'),
   SearchQueue = require('./lib/SearchQueue');
@@ -36,7 +37,8 @@ var timeoutObj = setInterval(function() {
       clearInterval(timeoutObj);
       initFlashlight();
     });
-}, 5000);
+  }, 5000);
+}
 
 function initFlashlight() {
   console.log('Connecting to Firebase %s'.grey, conf.FB_URL);
