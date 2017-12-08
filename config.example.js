@@ -40,6 +40,9 @@ else {
 
   // ElasticSearch password for http auth
   exports.ES_PASS  = process.env.ES_PASS || null;
+
+  // ElasticSearch protocol for http auth
+  exports.ES_PROTOCOL = process.env.ES_PROTOCOL || 'http';
 }
 
 /** Paths to Monitor
