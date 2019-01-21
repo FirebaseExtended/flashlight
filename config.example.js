@@ -57,8 +57,7 @@ else {
  *
  * To store your paths dynamically, rather than specifying them all here, you can store them in Firebase.
  * Format each path object with the same keys described above, and store the array of paths at whatever
- * location you specified in the FB_PATHS variable. Be sure to restrict that data in your Security Rules.
- ****************************************************/
+ * location you specified in the FB_PATH variable. Be sure to restrict that data in your Security Rules.  ****************************************************/
 exports.paths = [
   {
     path : "users",
