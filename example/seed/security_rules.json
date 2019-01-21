@@ -1,7 +1,7 @@
 {
    "rules": {
-     ".read": false,
-     ".write": false,
+     ".read": true,
+     ".write": true,
      "search": {
          "request": {
             "$recid": {
